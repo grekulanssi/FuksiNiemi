@@ -2,11 +2,11 @@ class Maa {
  
  int vakiluku;
  int pinta_ala;
- string nimi;
+ String nimi;
  int x;
  int y;
  
- Maa(int vakiluku, int pinta_ala, string nimi, int x, int y) {
+ Maa(int vakiluku, int pinta_ala, String nimi, int x, int y) {
   this.vakiluku = vakiluku;
   this.pinta_ala = pinta_ala;
   this.nimi = nimi;
@@ -23,7 +23,7 @@ class Maa {
    return this.pinta_ala; 
  }
  
- string annaNimi() {
+ String annaNimi() {
    return this.nimi;
  } 
  
