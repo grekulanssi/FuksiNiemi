@@ -2,7 +2,7 @@ class Maa {
  
  int vakiluku;
  int pinta_ala;
- String nimi;
+ string nimi;
  int x;
  int y;
  
@@ -23,7 +23,7 @@ class Maa {
    return this.pinta_ala; 
  }
  
- String annaNimi() {
+ string annaNimi() {
    return this.nimi;
  } 
  
