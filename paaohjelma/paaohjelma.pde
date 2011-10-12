@@ -4,11 +4,16 @@ List<Maa> maat = new ArrayList<Maa>();
 
 void setup() {
 
+  size(800,800);
   Haku hakuolio = new Haku();
   maat = hakuolio.teeHaku();  
 }
 
 void draw() {
+  for(int i = 0; i <maat.size(); i++){
+   float sade = maat.get(i).annaPinta_ala()/50000;
+   ellipse((i+1)*50,(i+1)*50, 2*sade, 2*sade);
+  }
 
 /*  for (int a=0; a < maat.size(); a++) {
 
