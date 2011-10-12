@@ -16,10 +16,7 @@ class Haku {
      }
     
     while (rivi != null) {
-     /**/
-     /*if (rivi==null || tarkistus > 13 ) {
-        noLoop();
-     } else {*/
+      
      String[] pieces = split(rivi,"&");
      
      int a = Integer.parseInt(pieces[2]);
@@ -32,13 +29,14 @@ class Haku {
      println(maa.annaPinta_ala());
      
      haetutMaat.add(maa); 
-     //}
+
      try {
          rivi = lukija.readLine();
      } catch (IOException e) {
        e.printStackTrace();
        rivi = null;
      }
+     
     }
     return haetutMaat;
   }
