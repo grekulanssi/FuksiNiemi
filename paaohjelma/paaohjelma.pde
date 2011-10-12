@@ -1,12 +1,14 @@
 
 List<Maa> maat = new ArrayList<Maa>();
+//Piirto piirto_olio;
 
 
 void setup() {
 
   size(800,800);
   Haku hakuolio = new Haku();
-  maat = hakuolio.teeHaku();  
+  maat = hakuolio.teeHaku(); 
+  //piirto_olio = new Piirto(maat);
 }
 
 void draw() {
@@ -31,6 +33,6 @@ void draw() {
         ellipse(aks, yy, 3, 3);
     }
   } */
-
+  
 }
 

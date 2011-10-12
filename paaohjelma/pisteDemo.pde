@@ -1,4 +1,4 @@
-boolean pisteet = false;
+/*boolean pisteet = false;
 ArrayList<Float> pisteidenX = new ArrayList<Float>();
 ArrayList<Float> pisteidenY = new ArrayList<Float>();
 ArrayList<Float> pisteidenXSuunnat = new ArrayList<Float>();
@@ -25,7 +25,7 @@ for(int i = 0; i<10; i++){
     x = 50;
     y = 50;
     point(x,y);
-  }*/
+  }*/ /*
   while(pow((x-keskipiste),2)+pow((y-keskipiste),2) >pow(sade,2)){
     x = random(keskipiste-sade, keskipiste+sade);
     y = random(keskipiste-sade, keskipiste+sade);
@@ -58,6 +58,5 @@ for(int i = 0; i<10; i++){
     pisteidenX.set(a,pisteidenX.get(a)+pisteidenXSuunnat.get(a));
     pisteidenY.set(a, pisteidenY.get(a)+pisteidenYSuunnat.get(a));
     }
-
-
+*/
 
