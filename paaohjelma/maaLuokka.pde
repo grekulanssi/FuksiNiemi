@@ -1,17 +1,13 @@
 class Maa {
  
  int vakiluku;
- int pinta_ala;
- string nimi;
- int x;
- int y;
+ float pinta_ala;
+ String nimi;
  
- Maa(int vakiluku, int pinta_ala, String nimi, int x, int y) {
+ Maa(int vakiluku, float pinta_ala, String nimi) {
   this.vakiluku = vakiluku;
   this.pinta_ala = pinta_ala;
   this.nimi = nimi;
-  this.x = x;
-  this.y = y;
   
  } 
  
@@ -19,20 +15,12 @@ class Maa {
    return this.vakiluku;
  }
  
- int annaPinta_ala() {
+ float annaPinta_ala() {
    return this.pinta_ala; 
  }
  
- string annaNimi() {
+ String annaNimi() {
    return this.nimi;
  } 
- 
- int annaX() {
-   return this.x;
- }
- 
- int annaY() {
-   return this.y;
- }
  
 }
