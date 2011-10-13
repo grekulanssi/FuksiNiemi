@@ -1,17 +1,18 @@
 
 List<Maa> maat = new ArrayList<Maa>();
-//Piirto piirto_olio;
+Piirto piirto_olio;
 
 
 void setup() {
 
-  size(800,800);
+  size(1200,400);
   Haku hakuolio = new Haku();
   maat = hakuolio.teeHaku(); 
-  //piirto_olio = new Piirto(maat);
+  Piirto piirto_olio = new Piirto();
+  piirto_olio.piirto(maat);
 }
 
-void draw() {
+/*void draw() {
   for(int i = 0; i <maat.size(); i++){
    float sade = maat.get(i).annaPinta_ala()/50000;
    ellipse((i+1)*50,(i+1)*50, 2*sade, 2*sade);
@@ -34,5 +35,4 @@ void draw() {
     }
   } */
   
-}
-
+//}
