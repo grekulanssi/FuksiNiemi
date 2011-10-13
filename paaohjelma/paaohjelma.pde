@@ -10,6 +10,7 @@ void setup() {
   maat = hakuolio.teeHaku(); 
   Piirto piirto_olio = new Piirto();
   piirto_olio.piirto(maat);
+  smooth();
 }
 
 /*void draw() {
