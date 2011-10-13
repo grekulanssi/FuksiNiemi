@@ -1,16 +1,22 @@
 
-List<Maa> maat = new ArrayList<Maa>();
+List<Maa> maat;
 Piirto piirto_olio;
 
 
 void setup() {
 
+  smooth();
   size(1200,400);
   Haku hakuolio = new Haku();
   maat = hakuolio.teeHaku(); 
-  Piirto piirto_olio = new Piirto();
-  piirto_olio.piirto(maat);
-  smooth();
+  piirto_olio = new Piirto(maat);
+  
+}
+
+void draw() {
+  background(200);
+  piirto_olio.piirto();
+ 
 }
 
 /*void draw() {

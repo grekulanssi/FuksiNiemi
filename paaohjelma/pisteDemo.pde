@@ -5,12 +5,16 @@ ArrayList<Float> pisteidenXSuunnat = new ArrayList<Float>();
 ArrayList<Float> pisteidenYSuunnat = new ArrayList<Float>();
 float suuntaX;
 float suuntaY;
+
+
 void setup(){
 size(400,400);
 background(255);
 smooth();
 //noLoop();
 }
+
+
 void draw(){
 strokeWeight(2);
 ellipseMode(CENTER);
@@ -58,5 +62,5 @@ for(int i = 0; i<10; i++){
     pisteidenX.set(a,pisteidenX.get(a)+pisteidenXSuunnat.get(a));
     pisteidenY.set(a, pisteidenY.get(a)+pisteidenYSuunnat.get(a));
     }
-*/
 
+*/

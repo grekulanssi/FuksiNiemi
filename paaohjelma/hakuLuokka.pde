@@ -24,9 +24,9 @@ class Haku {
      
      Maa maa = new Maa(a, b, pieces[0]);
      
-     println(maa.annaNimi());
-     println(maa.annaVakiluku());
-     println(maa.annaPinta_ala());
+     //println(maa.annaNimi());
+     //println(maa.annaVakiluku());
+     //println(maa.annaPinta_ala());
      
      haetutMaat.add(maa); 
 
