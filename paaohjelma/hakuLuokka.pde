@@ -22,7 +22,7 @@ class Haku {
      int a = Integer.parseInt(pieces[2]);
      float b = Float.parseFloat(pieces[1]);
      
-     Maa maa = new Maa(a, b, pieces[0]);
+     Maa maa = new Maa(a, b, pieces[0], pieces[3]);
      
      //println(maa.annaNimi());
      //println(maa.annaVakiluku());
