@@ -3,9 +3,15 @@ class Pisteet {
 
 //Lista pisteistä
 List<Piste> pistesuma = new ArrayList<Piste>();
-int pisteenhalkaisija = 2;
+int pisteenhalkaisija = 3;
+int x,y;
+float sade;
   
 Pisteet(int x, int y, float sade, int montako) {  
+  this.x = x;
+  this.y = y;
+  this.sade = sade;
+  
   //Arvotaan tarvittava määrä pisteitä pistejoukkoon
   for (int i=0; i<montako; i++) {
     float etaisyysKeskelta = random(sade);
@@ -25,17 +31,24 @@ void piirra() {
    fill(255);
    
    for (int i=0; i<this.pistesuma.size(); i++) {
-     ellipse(pistesuma.get(i).annaX(),pistesuma.get(i).annaY(),pisteenhalkaisija,pisteenhalkaisija);  
-   }
+     Piste piste = pistesuma.get(i);
+     ellipse(piste.annaX(),piste.annaY(),pisteenhalkaisija,pisteenhalkaisija);  
+     piste.liikuta();
+     if ( Math.sqrt( Math.pow(piste.annaX() - this.x, 2) + Math.pow(piste.annaY() - this.y, 2) ) >= this.sade ) {
+       piste.kaanna();
+     }
    
-}
+  }
 
 }
 
+}
 
 class Piste {
   
   int x, y;
+  int erotus = 1;
+  
   
 Piste(int x, int y) {
   this.x = x;
@@ -49,5 +62,15 @@ int annaX() {
 int annaY() {
   return this.y;
 }
+
+void liikuta() {
+  this.x = this.x + this.erotus;
+  this.y = this.y + this.erotus;
+}
+
+void kaanna() {
+  this.erotus = this.erotus * -1; 
+}
+
   
 }
