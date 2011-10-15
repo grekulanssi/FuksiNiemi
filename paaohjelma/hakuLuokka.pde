@@ -21,8 +21,11 @@ class Haku {
      
      int a = Integer.parseInt(pieces[2]);
      float b = Float.parseFloat(pieces[1]);
+     float c = Float.parseFloat(pieces[4]);
      
-     Maa maa = new Maa(a, b, pieces[0], pieces[3]);
+     Maa maa = new Maa(a, b, pieces[0], pieces[3], c);
+     
+     //println(maa.annaElinIka());
      
      //println(maa.annaNimi());
      //println(maa.annaVakiluku());

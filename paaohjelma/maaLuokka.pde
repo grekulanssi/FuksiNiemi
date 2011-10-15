@@ -4,12 +4,14 @@ class Maa {
  float pinta_ala;
  String nimi;
  String kuvanNimi;
+ float elinIka;
  
- Maa(int vakiluku, float pinta_ala, String nimi, String kuvanNimi) {
+ Maa(int vakiluku, float pinta_ala, String nimi, String kuvanNimi, float elinIka) {
   this.vakiluku = vakiluku;
   this.pinta_ala = pinta_ala;
   this.nimi = nimi;
   this.kuvanNimi = kuvanNimi;
+  this.elinIka = elinIka;
   
  } 
  
@@ -27,6 +29,9 @@ class Maa {
 
   String annaKuvanNimi() {
    return this.kuvanNimi;
+  } 
+  float annaElinIka() {
+   return this.elinIka;
   } 
  
 }
