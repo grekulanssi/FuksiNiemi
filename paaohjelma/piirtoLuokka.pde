@@ -15,20 +15,23 @@ Piirto(List<Maa> maat) {
   this.maat = maat;    
   for(int i = 0; i <maat.size(); i++){
    float kerroin = maat.get(i).annaPinta_ala()/50000; //en tiia onko taa hyva ratkasu, mutta talla saadaan ainaki pahimmat ylilyonnit pois
-   float sade = 10 + kerroin * 0.7; //10 "minimisade" ettei tuu minipalloja
+   float sade = 15 + kerroin * 0.5; //15 "minimisade" ettei tuu minipalloja
    sateet.add(sade);
+   //Tiina: pallojen ykoordinaatti tulee elinian mukaan
    float ykoordinaatti = 750 - maat.get(i).annaElinIka()*5;
    ykoordinaatit.add(ykoordinaatti);
+   //Tiina: pallojen xkoordinaatti tulee BKT/ca mukaan
+   float xkoordinaatti = 100 + maat.get(i).annaBkt()/100 * 1.5;
    //tasta eteenpain: kokeilu miten sain pallot tasaisin valimatkoin (ne kattoo edellisten xt ja sateet)
-   float xkoordinaatti;
-   if(i == 0){
+   /*if(i == 0){
      xkoordinaatti = 50 + sateet.get(i);
      xkoordinaatit.add(xkoordinaatti);
    }
    else{
      xkoordinaatti = xkoordinaatit.get(i-1) + sateet.get(i-1) + 50 + sateet.get(i);
      xkoordinaatit.add(xkoordinaatti);
-   }
+   }*/
+   xkoordinaatit.add(xkoordinaatti);
    pisteet.add(new Pisteet((int)xkoordinaatti, (int)ykoordinaatti, sade, 10)); //Lisätään pistejoukko
   }
 
@@ -42,8 +45,10 @@ void piirto() {
   for(int i = 0; i <maat.size(); i++) {
    float sade = sateet.get(i);
    fill(0);
+   //Toim.huom! olis parempi jos voitais kayttaa CORNER-modea, nyt esim y-akseli ei kuvaa tilannetta hyvin
    ellipseMode(CENTER);
    ellipse(xkoordinaatit.get(i),ykoordinaatit.get(i), 2*sade, 2*sade); //nyt pallot rivissa
+
    pisteet.get(i).piirra();
   }
   strokeWeight(3);
