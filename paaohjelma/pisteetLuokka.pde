@@ -7,7 +7,7 @@ int pisteenhalkaisija = 3;
 int x,y;
 float sade;
   
-Pisteet(int x, int y, float sade, int montako) {  
+Pisteet(int x, int y, float sade, int montako, Maa maa) {  
   this.x = x;
   this.y = y;
   this.sade = sade;
@@ -18,7 +18,7 @@ Pisteet(int x, int y, float sade, int montako) {
     float kulma = random(100);
     int xDif = (int) (etaisyysKeskelta * Math.cos(kulma));
     int yDif = (int) (etaisyysKeskelta * Math.sin(kulma));
-    this.pistesuma.add(new Piste(x+xDif, y+yDif)); 
+    this.pistesuma.add(new Piste(x+xDif, y+yDif, maa.annaTliikenne())); 
     println( (x+xDif)  + " " + (y+yDif) );
   }
 }
@@ -35,7 +35,7 @@ void piirra() {
      ellipse(piste.annaX(),piste.annaY(),pisteenhalkaisija,pisteenhalkaisija);  
      piste.liikuta();
      if ( Math.sqrt( Math.pow(piste.annaX() - this.x, 2) + Math.pow(piste.annaY() - this.y, 2) ) >= this.sade ) {
-       piste.kaanna();
+       piste.kaanna(1.8);
      }
    
   }
@@ -48,11 +48,17 @@ class Piste {
   
   int x, y;
   int erotus = 1;
+  PVector suunta;
+  float kerroin;
+  float m;
   
-  
-Piste(int x, int y) {
+Piste(int x, int y, int kerroin) {
   this.x = x;
   this.y = y;
+  this.kerroin = kerroin;
+  this.suunta = new PVector(random(10), random(10));
+  this.suunta.normalize();
+  this.m = millis();
 }
 
 int annaX() {
@@ -64,12 +70,33 @@ int annaY() {
 }
 
 void liikuta() {
-  this.x = this.x + this.erotus;
-  this.y = this.y + this.erotus;
+  float aikaero = millis() - this.m;
+  float korjain = 80000;
+
+  int xDif = (int)(aikaero*this.kerroin*this.suunta.x/korjain);
+  int yDif = (int)(aikaero*this.kerroin*this.suunta.y/korjain);
+  
+  if (xDif == 0 && yDif == 0)
+    return;
+    
+  this.x = this.x+xDif;
+  this.y = this.y+yDif;
+  this.m = millis();
 }
 
-void kaanna() {
-  this.erotus = this.erotus * -1; 
+// Rotate a vector in 2D
+void kaanna(float theta) {
+  // What's the magnitude?
+  float m = this.suunta.mag();
+  // What's the angle?
+  float a = this.suunta.heading2D();
+ 
+  // Change the angle
+  a += theta;
+ 
+  // Polar to cartesian for the new xy components
+  this.suunta.x = m * cos(a);
+  this.suunta.y = m * sin(a);
 }
 
   
