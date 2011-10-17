@@ -1,7 +1,7 @@
 class Haku {
 
   String tiedostonNimi;
-  BufferedReader lukija = createReader("maat.csv");
+  BufferedReader lukija = createReader("maat.txt");
   String rivi;
   int tarkistus;
   List<Maa> haetutMaat = new ArrayList<Maa>();
