@@ -4,7 +4,7 @@ class Piirto{
   List<Float> xkoordinaatit = new ArrayList<Float>();
   List<Float> ykoordinaatit = new ArrayList<Float>();
   List<Maa> maat;
-  List<Pisteet> pisteet = new ArrayList<Pisteet>();
+  List<Pistejoukko> pistejoukot = new ArrayList<Pistejoukko>();
   
   PFont font;
 
@@ -32,7 +32,7 @@ Piirto(List<Maa> maat) {
      xkoordinaatit.add(xkoordinaatti);
    }*/
    xkoordinaatit.add(xkoordinaatti);
-   pisteet.add(new Pisteet((int)xkoordinaatti, (int)ykoordinaatti, sade, 10, maat.get(i))); //Lisätään pistejoukko
+   pistejoukot.add(new Pistejoukko(maat.get(i), (int)xkoordinaatti, (int)ykoordinaatti, (int)sade)); //Lisätään pistejoukko
   }
 
 }
@@ -51,7 +51,7 @@ void piirto() {
    
    image(((Maa)maat.get(i)).annaLippu(), xkoordinaatit.get(i)-sade, ykoordinaatit.get(i)-sade, 2*sade, 2*sade);
 
-   pisteet.get(i).piirra();
+   pistejoukot.get(i).piirra();
   }
   strokeWeight(3);
   line(50,750,950,750);

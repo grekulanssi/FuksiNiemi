@@ -1,103 +1,120 @@
-/* Luokka joka kuvaa Pistejoukkoa */
-class Pisteet {
 
-//Lista pisteistä
-List<Piste> pistesuma = new ArrayList<Piste>();
-int pisteenhalkaisija = 3;
-int x,y;
-float sade;
+/*
+Pistejoukko
+
+*/
+class Pistejoukko {
+  List<Piste> pisteet = new ArrayList<Piste>();
+  int x,y,sade;
   
-Pisteet(int x, int y, float sade, int montako, Maa maa) {  
-  this.x = x;
-  this.y = y;
-  this.sade = sade;
-  
-  //Arvotaan tarvittava määrä pisteitä pistejoukkoon
-  for (int i=0; i<montako; i++) {
-    float etaisyysKeskelta = random(sade);
-    float kulma = random(100);
-    int xDif = (int) (etaisyysKeskelta * Math.cos(kulma));
-    int yDif = (int) (etaisyysKeskelta * Math.sin(kulma));
-    this.pistesuma.add(new Piste(x+xDif, y+yDif, maa.annaTliikenne())); 
-    println( (x+xDif)  + " " + (y+yDif) );
-  }
-}
-
-//Piirretään pisteet
-void piirra() {
-   fill(0);
-   ellipseMode(CENTER);
-   strokeWeight(0);
-   fill(255);
-   
-   for (int i=0; i<this.pistesuma.size(); i++) {
-     Piste piste = pistesuma.get(i);
-     ellipse(piste.annaX(),piste.annaY(),pisteenhalkaisija,pisteenhalkaisija);  
-     piste.liikuta();
-     if ( Math.sqrt( Math.pow(piste.annaX() - this.x, 2) + Math.pow(piste.annaY() - this.y, 2) ) >= this.sade ) {
-       piste.kaanna(1.8);
-     }
-   
-  }
-
-}
-
-}
-
-class Piste {
-  
-  int x, y;
-  int erotus = 1;
-  PVector suunta;
-  float kerroin;
-  float m;
-  
-Piste(int x, int y, int kerroin) {
-  this.x = x;
-  this.y = y;
-  this.kerroin = kerroin;
-  this.suunta = new PVector(random(10), random(10));
-  this.suunta.normalize();
-  this.m = millis();
-}
-
-int annaX() {
-  return this.x;
-}
-
-int annaY() {
-  return this.y;
-}
-
-void liikuta() {
-  float aikaero = millis() - this.m;
-  float korjain = 80000;
-
-  int xDif = (int)(aikaero*this.kerroin*this.suunta.x/korjain);
-  int yDif = (int)(aikaero*this.kerroin*this.suunta.y/korjain);
-  
-  if (xDif == 0 && yDif == 0)
-    return;
+  Pistejoukko(Maa maa, int x, int y, int sade) {
+    this.x=x;
+    this.y=y;
+    this.sade=sade;
     
-  this.x = this.x+xDif;
-  this.y = this.y+yDif;
-  this.m = millis();
-}
-
-// Rotate a vector in 2D
-void kaanna(float theta) {
-  // What's the magnitude?
-  float m = this.suunta.mag();
-  // What's the angle?
-  float a = this.suunta.heading2D();
- 
-  // Change the angle
-  a += theta;
- 
-  // Polar to cartesian for the new xy components
-  this.suunta.x = m * cos(a);
-  this.suunta.y = m * sin(a);
-}
-
+    float liikenteennopeus = (float)maa.annaTliikenne()/100000;
+    int pisteidenLkm = maa.annaVakiluku()/2500000;
+    
+    for (int i=0; i<pisteidenLkm; i++) {
+      //Arvotaan sijainti ympyrässä
+      float etaisyysKeskelta = random(sade-Piste.HALKAISIJA/2);
+      float kulma = random(100);
+      int xDif = (int) (etaisyysKeskelta * Math.cos(kulma));
+      int yDif = (int) (etaisyysKeskelta * Math.sin(kulma));
+      //Lisätään piste listaan
+      pisteet.add(new Piste(x+xDif,y+yDif, this, liikenteennopeus)); 
+    }
+    
+  }
   
+  int annaX() {
+    return this.x;
+  }
+  int annaY() {
+    return this.y;
+  }
+  int annaSade() {
+    return this.sade; 
+  }
+  
+  void piirra() {
+    for (int a=0; a<pisteet.size(); a++) {
+       this.pisteet.get(a).piirra();
+    } 
+  }
+}
+
+/*
+Piste
+*/
+class Piste {
+  public static final int HALKAISIJA = 10;
+  
+  int x,y;
+  PVector suunta;
+  Pistejoukko joukko;
+  float nopeus;
+  float edellinenaika;
+  
+  Piste(int x, int y, Pistejoukko joukko, float nopeus) {
+    this.x=x;
+    this.y=y; 
+    this.suunta = new PVector(random(10), random(10)); this.suunta.normalize();
+    this.joukko = joukko;
+    this.nopeus = nopeus;
+    this.edellinenaika = millis();
+  }
+  
+  void piirra() {
+    //Sidotaan liike kelloon
+    float aikaero = millis()-this.edellinenaika;    
+    int xDif = (int)(this.suunta.x*this.nopeus*aikaero);
+    int yDif = (int)(this.suunta.y*this.nopeus*aikaero);
+    
+    //Piirtotyyli
+    fill(255);
+    stroke(0);
+    strokeWeight(1);
+    
+    //Ei liikuteta jos ei oo liikuteltavaa
+    if (xDif == 0 && yDif == 0) {
+      ellipse(this.x, this.y, HALKAISIJA, HALKAISIJA); 
+      return;
+    }    
+    this.edellinenaika = millis();
+    
+    //Liikutetaan
+    this.x += xDif;
+    this.y += yDif;
+    
+    //Palautetaan maailmankartalle tarvittaessa
+    if ( dist(this.x, this.y, joukko.annaX(), joukko.annaY()) > joukko.annaSade()-HALKAISIJA/2 ) {
+     PVector suuntavektori = new PVector(this.x-joukko.annaX(), this.y-joukko.annaY());
+     suuntavektori.normalize();
+     suuntavektori.mult(joukko.annaSade()-HALKAISIJA/2);
+     this.x = (int)(joukko.annaX()+suuntavektori.x);
+     this.y = (int)(joukko.annaY()+suuntavektori.y);
+     this.kaanna(random(1,4)); 
+    }
+    
+    
+    //Piirretään
+    ellipse(this.x, this.y, HALKAISIJA, HALKAISIJA); 
+  }
+  
+    // Rotate a vector in 2D
+  void kaanna(float theta) {
+    // What's the magnitude?
+    float m = this.suunta.mag();
+    // What's the angle?
+    float a = this.suunta.heading2D();
+   
+    // Change the angle
+    a += theta;
+   
+    // Polar to cartesian for the new xy components
+    this.suunta.x = m * cos(a);
+    this.suunta.y = m * sin(a);
+  }
+
 }
