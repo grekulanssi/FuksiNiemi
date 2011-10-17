@@ -8,8 +8,9 @@ class Maa {
  int bkt;
  PImage lippu;
  int tliikenne;
+ float synnytys;
  
- Maa(int vakiluku, float pinta_ala, String nimi, String kuvanNimi, float elinIka, int bkt, int tliikenne) {
+ Maa(int vakiluku, float pinta_ala, String nimi, String kuvanNimi, float elinIka, int bkt, int tliikenne, float synnytys) {
   this.vakiluku = vakiluku;
   this.pinta_ala = pinta_ala;
   this.nimi = nimi;
@@ -18,6 +19,7 @@ class Maa {
   this.bkt = bkt;
   this.lippu = loadImage(kuvanNimi);
   this.tliikenne = tliikenne;
+  this.synnytys = synnytys;
   
  }
  
@@ -51,6 +53,9 @@ class Maa {
    
  int annaTliikenne() {
    return this.tliikenne; 
+ }
+ float annaSynnytys(){
+ return this.synnytys;
  }
  
 }
