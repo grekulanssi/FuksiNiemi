@@ -6,6 +6,8 @@ class Piirto{
   List<Maa> maat;
   List<Pisteet> pisteet = new ArrayList<Pisteet>();
   
+  int xakselimode = 1;
+  
   PFont font;
 
 /* 
@@ -21,16 +23,14 @@ Piirto(List<Maa> maat) {
    float ykoordinaatti = 750 - maat.get(i).annaElinIka()*5;
    ykoordinaatit.add(ykoordinaatti);
    //Tiina: pallojen xkoordinaatti tulee BKT/ca mukaan
-   float xkoordinaatti = 100 + maat.get(i).annaBkt()/100 * 1.5;
-   //tasta eteenpain: kokeilu miten sain pallot tasaisin valimatkoin (ne kattoo edellisten xt ja sateet)
-   /*if(i == 0){
-     xkoordinaatti = 50 + sateet.get(i);
-     xkoordinaatit.add(xkoordinaatti);
+   float xkoordinaatti = 0;
+   if(this.xakselimode == 1){
+   xkoordinaatti = 100 + maat.get(i).annaBkt()/100 * 1.5;
    }
    else{
-     xkoordinaatti = xkoordinaatit.get(i-1) + sateet.get(i-1) + 50 + sateet.get(i);
-     xkoordinaatit.add(xkoordinaatti);
-   }*/
+   xkoordinaatti = 100 + maat.get(i).annaSynnytys();
+   }
+
    xkoordinaatit.add(xkoordinaatti);
    pisteet.add(new Pisteet((int)xkoordinaatti, (int)ykoordinaatti, sade, 10, maat.get(i))); //Lisätään pistejoukko
   }
@@ -56,10 +56,23 @@ void piirto() {
   strokeWeight(3);
   line(50,750,950,750);
   line(50,750,50,50);
-  /*font = loadFont("AgencyFB-Reg-48.vlw");
-  textFont(font, 30);
-  text("Elinikä",200,200);
-  //Jos yrittaa lisata tekstit kuvaamaan akseleita, koko ohjelma hidastuu... PALJON!
-  */
+  text("Elinikä",10,50);
+  if(this.xakselimode == 1){
+  text("BKT/ca", 200,780);
+  }
+  else{
+  text("Synnytys", 200, 780);
+  }
+
 }
+ void tarkistaXAkselimode(){
+ if(keyPressed){
+   if(this.xakselimode == 1){
+   this.xakselimode = 2;
+   }
+   else{
+   this.xakselimode = 1;
+   }
+ }
+ }
 }
