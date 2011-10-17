@@ -32,7 +32,7 @@ Piirto(List<Maa> maat) {
      xkoordinaatit.add(xkoordinaatti);
    }*/
    xkoordinaatit.add(xkoordinaatti);
-   pisteet.add(new Pisteet((int)xkoordinaatti, (int)ykoordinaatti, sade, 10)); //Lisätään pistejoukko
+   pisteet.add(new Pisteet((int)xkoordinaatti, (int)ykoordinaatti, sade, 10, maat.get(i))); //Lisätään pistejoukko
   }
 
 }
