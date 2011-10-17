@@ -51,13 +51,12 @@ void piirto() {
    
    image(((Maa)maat.get(i)).annaLippu(), xkoordinaatit.get(i)-sade, ykoordinaatit.get(i)-sade, 2*sade, 2*sade);
 
-<<<<<<< HEAD
+
    pistejoukot.get(i).piirra();
-=======
-   pisteet.get(i).piirra();
+
    
    hiirenTarkistus(xkoordinaatit.get(i), ykoordinaatit.get(i), sade*2, maat.get(i));
->>>>>>> 277ffddf0d4b4b870fa4447b34e7a7e4678bd170
+
   }
   strokeWeight(3);
   line(50,750,950,750);
@@ -71,7 +70,7 @@ void piirto() {
   }
 
 }
-<<<<<<< HEAD
+
 
  void hiirenTarkistus(float x, float y, float sade, Maa maa) {
    
@@ -86,7 +85,6 @@ void piirto() {
 
 
 
-=======
  void tarkistaXAkselimode(){
  if(keyPressed){
    if(this.xakselimode == 1){
@@ -97,5 +95,5 @@ void piirto() {
    }
  }
  }
->>>>>>> 3a34d3a00da121c0e06283cf9533067cda2004bb
+ 
 }

@@ -17,12 +17,9 @@ void draw() {
   background(200);
   piirto_olio.tarkistaXAkselimode();
   piirto_olio.piirto();
-<<<<<<< HEAD
   //infoRuutu ruutu = new infoRuutu(maat.get(1),0,0);
-=======
   infoRuutu ruutu = new infoRuutu(maat.get(1),0,0);
   
->>>>>>> 3a34d3a00da121c0e06283cf9533067cda2004bb
  
 }
 
