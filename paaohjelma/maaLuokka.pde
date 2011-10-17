@@ -6,6 +6,7 @@ class Maa {
  String kuvanNimi;
  float elinIka;
  int bkt;
+ PImage lippu;
  
  Maa(int vakiluku, float pinta_ala, String nimi, String kuvanNimi, float elinIka, int bkt) {
   this.vakiluku = vakiluku;
@@ -14,8 +15,9 @@ class Maa {
   this.kuvanNimi = kuvanNimi;
   this.elinIka = elinIka;
   this.bkt = bkt;
+  this.lippu = loadImage(kuvanNimi);
   
- } 
+ }
  
  int annaVakiluku() {
    return this.vakiluku;
@@ -29,14 +31,20 @@ class Maa {
    return this.nimi;
  }
 
-  String annaKuvanNimi() {
+ String annaKuvanNimi() {
    return this.kuvanNimi;
-  } 
-  float annaElinIka() {
-   return this.elinIka;
-  }
-   int annaBkt(){
-   return this.bkt;
-   } 
+ }
+ 
+ float annaElinIka() {
+  return this.elinIka;
+ }
+ 
+ int annaBkt(){
+  return this.bkt;
+ }
+
+ PImage annaLippu() {
+  return this.lippu;
+ } 
  
 }

@@ -26,6 +26,7 @@ class Haku {
      
      Maa maa = new Maa(a, b, pieces[0], pieces[3], c, d);
      
+     
      //println(maa.annaElinIka());
      
      //println(maa.annaNimi());
