@@ -16,7 +16,7 @@ void setup() {
 void draw() {
   background(200);
   piirto_olio.piirto();
-  infoRuutu ruutu = new infoRuutu(maat.get(1),0,0);
+  //infoRuutu ruutu = new infoRuutu(maat.get(1),0,0);
  
 }
 

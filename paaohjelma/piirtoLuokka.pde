@@ -52,6 +52,8 @@ void piirto() {
    image(((Maa)maat.get(i)).annaLippu(), xkoordinaatit.get(i)-sade, ykoordinaatit.get(i)-sade, 2*sade, 2*sade);
 
    pisteet.get(i).piirra();
+   
+   hiirenTarkistus(xkoordinaatit.get(i), ykoordinaatit.get(i), sade*2, maat.get(i));
   }
   strokeWeight(3);
   line(50,750,950,750);
@@ -62,4 +64,18 @@ void piirto() {
   //Jos yrittaa lisata tekstit kuvaamaan akseleita, koko ohjelma hidastuu... PALJON!
   */
 }
+
+ void hiirenTarkistus(float x, float y, float sade, Maa maa) {
+   
+   float testiX = x - mouseX;
+   float testiY = y - mouseY;
+   
+   if(sqrt(sq(testiX)+sq(testiY)) < sade/2) {
+     infoRuutu ruutu = new infoRuutu(maa,0,0);
+   }
+   
+ }
+
+
+
 }
