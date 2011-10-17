@@ -48,7 +48,7 @@ class Pistejoukko {
 Piste
 */
 class Piste {
-  public static final int HALKAISIJA = 10;
+  public static final int HALKAISIJA = 6;
   
   int x,y;
   PVector suunta;
