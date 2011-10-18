@@ -9,8 +9,9 @@ class Maa {
  PImage lippu;
  int tliikenne;
  float synnytys;
+ int tlkm; //netinkäyttäjiä
  
- Maa(int vakiluku, float pinta_ala, String nimi, String kuvanNimi, float elinIka, int bkt, int tliikenne, float synnytys) {
+ Maa(int vakiluku, float pinta_ala, String nimi, String kuvanNimi, float elinIka, int bkt, int tliikenne, float synnytys, int tlkm) {
   this.vakiluku = vakiluku;
   this.pinta_ala = pinta_ala;
   this.nimi = nimi;
@@ -20,7 +21,7 @@ class Maa {
   this.lippu = loadImage(kuvanNimi);
   this.tliikenne = tliikenne;
   this.synnytys = synnytys;
-  
+  this.tlkm = tlkm;
  }
  
  int annaVakiluku() {
@@ -50,10 +51,16 @@ class Maa {
  int annaBkt(){
    return this.bkt;
  } 
-   
+  
+ //Anna keskimääräinen nettiyhteyden nopeus 
  int annaTliikenne() {
    return this.tliikenne; 
  }
+ //Anna netinkäyttäjien määrä
+ int annaNetinKayttajat() {
+   return this.tlkm;
+ }
+ 
  float annaSynnytys(){
  return this.synnytys;
  }
