@@ -100,7 +100,7 @@ void piirto() {
    for(int i = 0; i<maat.size(); i++){
  if(mousePressed && mouseX>100 && mouseX<200 && mouseY>xAkselinEtaisyys+10 && mouseY<xAkselinEtaisyys+30){
    xkoordinaatti = 100 + maat.get(i).annaBkt()/100 * 1.5;
-
+   //pistejoukot.set(i, new Pistejoukko( maat.get(i), xkoordinaatti, ykoordinaatit.get(i), sateet.get(i) ));
  }
  if(mousePressed && mouseX>300 && mouseX<400 && mouseY>xAkselinEtaisyys+10 && mouseY<xAkselinEtaisyys+30){
   xkoordinaatti = maat.get(i).annaSynnytys()*20; 
