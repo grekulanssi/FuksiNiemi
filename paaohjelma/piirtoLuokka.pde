@@ -1,8 +1,8 @@
 class Piirto{
   
-  List<Float> sateet = new ArrayList<Float>();
-  List<Float> xkoordinaatit = new ArrayList<Float>();
-  List<Float> ykoordinaatit = new ArrayList<Float>();
+  List<Integer> sateet = new ArrayList<Integer>();
+  List<Integer> xkoordinaatit = new ArrayList<Integer>();
+  List<Integer> ykoordinaatit = new ArrayList<Integer>();
   List<Maa> maat;
   List<Pistejoukko> pistejoukot = new ArrayList<Pistejoukko>();
   
@@ -20,17 +20,17 @@ Piirto(List<Maa> maat) {
   for(int i = 0; i <maat.size(); i++){
    float kerroin = maat.get(i).annaVakiluku()/2000000; //en tiia onko taa hyva ratkasu, mutta talla saadaan ainaki pahimmat ylilyonnit pois
    float sade = 20 + kerroin * 0.5; //15 "minimisade" ettei tuu minipalloja
-   sateet.add(sade);
+   sateet.add((int)sade);
    //Tiina: pallojen ykoordinaatti tulee elinian mukaan
-   float ykoordinaatti = xAkselinEtaisyys+10 - maat.get(i).annaElinIka()*5;
+   int ykoordinaatti =(int)(xAkselinEtaisyys+10 - maat.get(i).annaElinIka()*5);
    ykoordinaatit.add(ykoordinaatti);
    //Tiina: pallojen xkoordinaatti tulee BKT/ca mukaan
-   float xkoordinaatti = 0;
+   int xkoordinaatti = 0;
    if(this.xakselimode == 1){
-   xkoordinaatti = 100 + maat.get(i).annaBkt()/100 * 1.5;
+   xkoordinaatti = (int)(100 + maat.get(i).annaBkt()/100 * 1.5);
    }
    else{
-   xkoordinaatti = 100 + maat.get(i).annaSynnytys();
+   xkoordinaatti = (int)(100 + maat.get(i).annaSynnytys());
    }
 
    xkoordinaatit.add(xkoordinaatti);
@@ -45,7 +45,7 @@ Piirto(List<Maa> maat) {
 void piirto() {
   
   for(int i = 0; i <maat.size(); i++) {
-   float sade = sateet.get(i);
+   int sade = sateet.get(i);
    fill(0);
    //Toim.huom! olis parempi jos voitais kayttaa CORNER-modea, nyt esim y-akseli ei kuvaa tilannetta hyvin
    ellipseMode(CENTER);
@@ -78,14 +78,14 @@ void piirto() {
 }
 
 
- void hiirenTarkistus(float x, float y, float sade, Maa maa) {
+ void hiirenTarkistus(int x, int y, int sade, Maa maa) {
    
    /* Metodi tarkistaa, onko hiiri parametrina annettujen tietojen määräämässä
       ympyrässä. Jos on, niin luodaan inforuutu
    */
    
-   float testiX = x - mouseX;
-   float testiY = y - mouseY;
+   int testiX = x - mouseX;
+   int testiY = y - mouseY;
    
    if(sqrt(sq(testiX)+sq(testiY)) < sade/2) {
      infoRuutu ruutu = new infoRuutu(maa, 100, 100);
@@ -96,14 +96,17 @@ void piirto() {
 
 
  void tarkistaXAkselimode(){
-   float xkoordinaatti = 0;
+   int xkoordinaatti = 0;
    for(int i = 0; i<maat.size(); i++){
+ //Bkt-mode
  if(mousePressed && mouseX>100 && mouseX<200 && mouseY>xAkselinEtaisyys+10 && mouseY<xAkselinEtaisyys+30){
-   xkoordinaatti = 100 + maat.get(i).annaBkt()/100 * 1.5;
-   //pistejoukot.set(i, new Pistejoukko( maat.get(i), xkoordinaatti, ykoordinaatit.get(i), sateet.get(i) ));
+   xkoordinaatti = (int)(100 + maat.get(i).annaBkt()/100 * 1.5);
+   pistejoukot.set(i, new Pistejoukko( maat.get(i), xkoordinaatti, ykoordinaatit.get(i), (int)sateet.get(i) ));
  }
+ //Synnytys-mode
  if(mousePressed && mouseX>300 && mouseX<400 && mouseY>xAkselinEtaisyys+10 && mouseY<xAkselinEtaisyys+30){
-  xkoordinaatti = maat.get(i).annaSynnytys()*20; 
+  xkoordinaatti = (int)(maat.get(i).annaSynnytys()*20); 
+  pistejoukot.set(i, new Pistejoukko( maat.get(i), xkoordinaatti, ykoordinaatit.get(i), (int)sateet.get(i) ));
  }
  if(xkoordinaatti != 0){
  xkoordinaatit.set(i, xkoordinaatti);
