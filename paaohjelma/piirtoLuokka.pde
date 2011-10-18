@@ -16,8 +16,8 @@ class Piirto{
 Piirto(List<Maa> maat) {
   this.maat = maat;    
   for(int i = 0; i <maat.size(); i++){
-   float kerroin = maat.get(i).annaPinta_ala()/50000; //en tiia onko taa hyva ratkasu, mutta talla saadaan ainaki pahimmat ylilyonnit pois
-   float sade = 15 + kerroin * 0.5; //15 "minimisade" ettei tuu minipalloja
+   float kerroin = maat.get(i).annaVakiluku()/2000000; //en tiia onko taa hyva ratkasu, mutta talla saadaan ainaki pahimmat ylilyonnit pois
+   float sade = 20 + kerroin * 0.5; //15 "minimisade" ettei tuu minipalloja
    sateet.add(sade);
    //Tiina: pallojen ykoordinaatti tulee elinian mukaan
    float ykoordinaatti = 750 - maat.get(i).annaElinIka()*5;
