@@ -49,12 +49,13 @@ void piirto() {
    ellipseMode(CENTER);
    ellipse(xkoordinaatit.get(i),ykoordinaatit.get(i), 2*sade, 2*sade); //nyt pallot rivissa
    
+   // Piirretään maiden liput
    image(((Maa)maat.get(i)).annaLippu(), xkoordinaatit.get(i)-sade, ykoordinaatit.get(i)-sade, 2*sade, 2*sade);
 
 
    pistejoukot.get(i).piirra();
 
-   
+   // Tarkistetaan onko hiiri jonkun maan päällä 
    hiirenTarkistus(xkoordinaatit.get(i), ykoordinaatit.get(i), sade*2, maat.get(i));
    
    tarkistaXAkselimode();
@@ -73,6 +74,10 @@ void piirto() {
 
 
  void hiirenTarkistus(float x, float y, float sade, Maa maa) {
+   
+   /* Metodi tarkistaa, onko hiiri parametrina annettujen tietojen määräämässä
+      ympyrässä. Jos on, niin luodaan inforuutu
+   */
    
    float testiX = x - mouseX;
    float testiY = y - mouseY;
