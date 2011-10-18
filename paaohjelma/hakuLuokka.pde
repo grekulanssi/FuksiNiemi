@@ -1,12 +1,13 @@
 class Haku {
 
   String tiedostonNimi;
-  BufferedReader lukija = createReader("maat.txt");
+  BufferedReader lukija = createReader("maat.txt"); // luetaan maat.txt tiedostosta
   String rivi;
-  int tarkistus;
   List<Maa> haetutMaat = new ArrayList<Maa>();
   
   List<Maa> teeHaku() {
+    
+    // Haetaan maat.txt tiedostosta maiden tiedot ja luodaan Maa-olioita niiden pohjalta
   
     try {
          rivi = lukija.readLine(); //Ekaa riviä ei lasketa
@@ -14,14 +15,13 @@ class Haku {
      } catch (IOException e) {
        e.printStackTrace();
        rivi = null;
-     }
-    
-    
-    
+     }  
     
     while (rivi != null) {
       
      String[] pieces = split(rivi,"\t");
+     
+     // Muutetaan parametrit oikeisiin muotoihin
      
      int a = Integer.parseInt(pieces[2]);
      float b = Float.parseFloat(pieces[1]);
@@ -33,12 +33,7 @@ class Haku {
      
      Maa maa = new Maa(a, b, pieces[0], pieces[3], c, d, q, f, w);
      
-     println(maa.annaSynnytys());
-     //println(maa.annaElinIka());
-     
-     //println(maa.annaNimi());
-     //println(maa.annaVakiluku());
-     //println(maa.annaPinta_ala());
+     // Lisätään Maa-oliot haetutMaat-listaan
      
      haetutMaat.add(maa); 
 
@@ -49,7 +44,8 @@ class Haku {
        rivi = null;
      }
      
-    }
+    }    
+    // Metodi palauttaa haetutMaat-listan  
     return haetutMaat;
   }
 
