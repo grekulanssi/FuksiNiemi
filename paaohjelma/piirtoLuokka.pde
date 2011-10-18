@@ -80,7 +80,7 @@ void piirto() {
    float testiY = y - mouseY;
    
    if(sqrt(sq(testiX)+sq(testiY)) < sade/2) {
-     infoRuutu ruutu = new infoRuutu(maa,0,0);
+     infoRuutu ruutu = new infoRuutu(maa, 100, 100);
    }
    
  }
