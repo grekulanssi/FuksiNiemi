@@ -9,6 +9,8 @@ class Piirto{
   int xakselimode = 1;
   
   PFont font;
+  
+  final int xAkselinEtaisyys = 600;
 
 /* 
  * Kun luodaan Piirto-olio, alustetaan säteet ja xkoordinaatit 
@@ -20,7 +22,7 @@ Piirto(List<Maa> maat) {
    float sade = 20 + kerroin * 0.5; //15 "minimisade" ettei tuu minipalloja
    sateet.add(sade);
    //Tiina: pallojen ykoordinaatti tulee elinian mukaan
-   float ykoordinaatti = 750 - maat.get(i).annaElinIka()*5;
+   float ykoordinaatti = xAkselinEtaisyys+10 - maat.get(i).annaElinIka()*5;
    ykoordinaatit.add(ykoordinaatti);
    //Tiina: pallojen xkoordinaatti tulee BKT/ca mukaan
    float xkoordinaatti = 0;
@@ -61,13 +63,14 @@ void piirto() {
    
 
   }
+  println(screen.height);
   strokeWeight(3);
-  line(50,750,950,750);
-  line(50,750,50,50);
+  line(50,xAkselinEtaisyys,950,xAkselinEtaisyys);
+  line(50,xAkselinEtaisyys,50,50);
   text("Elinikä",10,50);
   fill(255);
-  rect(100,760,100,20);
-  rect(300,760,100,20);
+  rect(100,xAkselinEtaisyys+10,100,20);
+  rect(300,xAkselinEtaisyys+10,100,20);
 
 }
 
@@ -88,10 +91,11 @@ void piirto() {
  void tarkistaXAkselimode(){
    float xkoordinaatti = 0;
    for(int i = 0; i<maat.size(); i++){
- if(mousePressed && mouseX>100 && mouseX<200 && mouseY>760 && mouseY<780){
+ if(mousePressed && mouseX>100 && mouseX<200 && mouseY>xAkselinEtaisyys+10 && mouseY<xAkselinEtaisyys+30){
    xkoordinaatti = 100 + maat.get(i).annaBkt()/100 * 1.5;
+
  }
- if(mousePressed && mouseX>300 && mouseX<400 && mouseY>760 && mouseY<780){
+ if(mousePressed && mouseX>300 && mouseX<400 && mouseY>xAkselinEtaisyys+10 && mouseY<xAkselinEtaisyys+30){
   xkoordinaatti = maat.get(i).annaSynnytys()*20; 
  }
  if(xkoordinaatti != 0){
