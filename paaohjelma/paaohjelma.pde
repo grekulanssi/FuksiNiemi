@@ -16,6 +16,12 @@ void setup() {
 void draw() {
   background(200);
   piirto_olio.piirto();
+<<<<<<< HEAD
+=======
+  //infoRuutu ruutu = new infoRuutu(maat.get(1),0,0);
+  infoRuutu ruutu = new infoRuutu(maat.get(1),0,0);
+  
+>>>>>>> 521b31e3378f8adaef271ac1c052af0e3883ca38
  
 }
 

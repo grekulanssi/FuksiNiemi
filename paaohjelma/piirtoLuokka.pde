@@ -4,7 +4,7 @@ class Piirto{
   List<Float> xkoordinaatit = new ArrayList<Float>();
   List<Float> ykoordinaatit = new ArrayList<Float>();
   List<Maa> maat;
-  List<Pisteet> pisteet = new ArrayList<Pisteet>();
+  List<Pistejoukko> pistejoukot = new ArrayList<Pistejoukko>();
   
   int xakselimode = 1;
   
@@ -32,7 +32,7 @@ Piirto(List<Maa> maat) {
    }
 
    xkoordinaatit.add(xkoordinaatti);
-   pisteet.add(new Pisteet((int)xkoordinaatti, (int)ykoordinaatti, sade, 10, maat.get(i))); //Lisätään pistejoukko
+   pistejoukot.add(new Pistejoukko(maat.get(i), (int)xkoordinaatti, (int)ykoordinaatti, (int)sade)); //Lisätään pistejoukko
   }
 
 }
@@ -51,9 +51,12 @@ void piirto() {
    
    image(((Maa)maat.get(i)).annaLippu(), xkoordinaatit.get(i)-sade, ykoordinaatit.get(i)-sade, 2*sade, 2*sade);
 
-   pisteet.get(i).piirra();
+
+   pistejoukot.get(i).piirra();
+
    
    hiirenTarkistus(xkoordinaatit.get(i), ykoordinaatit.get(i), sade*2, maat.get(i));
+
   }
   strokeWeight(3);
   line(50,750,950,750);
@@ -67,7 +70,7 @@ void piirto() {
   }
 
 }
-<<<<<<< HEAD
+
 
  void hiirenTarkistus(float x, float y, float sade, Maa maa) {
    
@@ -82,7 +85,6 @@ void piirto() {
 
 
 
-=======
  void tarkistaXAkselimode(){
  if(keyPressed){
    if(this.xakselimode == 1){
@@ -93,5 +95,5 @@ void piirto() {
    }
  }
  }
->>>>>>> 3a34d3a00da121c0e06283cf9533067cda2004bb
+ 
 }
