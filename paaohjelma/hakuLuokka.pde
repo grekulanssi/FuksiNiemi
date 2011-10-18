@@ -29,8 +29,9 @@ class Haku {
      int d = Integer.parseInt(pieces[5]);
      int q = Integer.parseInt(pieces[6]);
      float f = Float.parseFloat(pieces[7]);
+     int w = Integer.parseInt(pieces[8]);
      
-     Maa maa = new Maa(a, b, pieces[0], pieces[3], c, d, q, f);
+     Maa maa = new Maa(a, b, pieces[0], pieces[3], c, d, q, f, w);
      
      println(maa.annaSynnytys());
      //println(maa.annaElinIka());
