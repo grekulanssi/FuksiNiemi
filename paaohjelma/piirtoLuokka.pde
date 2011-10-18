@@ -71,6 +71,8 @@ void piirto() {
   fill(255);
   rect(100,xAkselinEtaisyys+10,100,20);
   rect(300,xAkselinEtaisyys+10,100,20);
+  fill(0);
+  text("BKT/ca", 200, 200);
 
 }
 
