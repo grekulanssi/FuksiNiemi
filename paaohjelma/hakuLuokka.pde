@@ -32,7 +32,7 @@ class Haku {
      
      Maa maa = new Maa(a, b, pieces[0], pieces[3], c, d, q, f);
      
-     
+     println(maa.annaSynnytys());
      //println(maa.annaElinIka());
      
      //println(maa.annaNimi());

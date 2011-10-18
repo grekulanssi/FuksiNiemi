@@ -56,18 +56,18 @@ void piirto() {
 
    
    hiirenTarkistus(xkoordinaatit.get(i), ykoordinaatit.get(i), sade*2, maat.get(i));
+   
+   tarkistaXAkselimode();
+   
 
   }
   strokeWeight(3);
   line(50,750,950,750);
   line(50,750,50,50);
   text("Elinikä",10,50);
-  if(this.xakselimode == 1){
-  text("BKT/ca", 200,780);
-  }
-  else{
-  text("Synnytys", 200, 780);
-  }
+  fill(255);
+  rect(100,760,100,20);
+  rect(300,760,100,20);
 
 }
 
@@ -86,14 +86,19 @@ void piirto() {
 
 
  void tarkistaXAkselimode(){
- if(keyPressed){
-   if(this.xakselimode == 1){
-   this.xakselimode = 2;
-   }
-   else{
-   this.xakselimode = 1;
-   }
+   float xkoordinaatti = 0;
+   for(int i = 0; i<maat.size(); i++){
+ if(mousePressed && mouseX>100 && mouseX<200 && mouseY>760 && mouseY<780){
+   xkoordinaatti = 100 + maat.get(i).annaBkt()/100 * 1.5;
+ }
+ if(mousePressed && mouseX>300 && mouseX<400 && mouseY>760 && mouseY<780){
+  xkoordinaatti = maat.get(i).annaSynnytys()*20; 
+ }
+ if(xkoordinaatti != 0){
+ xkoordinaatit.set(i, xkoordinaatti);
  }
  }
+ }
+ 
  
 }
