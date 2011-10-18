@@ -69,6 +69,8 @@ void piirto() {
   fill(255);
   rect(100,760,100,20);
   rect(300,760,100,20);
+  fill(0);
+  text("BKT/ca", 200, 200);
 
 }
 
@@ -95,6 +97,7 @@ void piirto() {
    for(int i = 0; i<maat.size(); i++){
  if(mousePressed && mouseX>100 && mouseX<200 && mouseY>760 && mouseY<780){
    xkoordinaatti = 100 + maat.get(i).annaBkt()/100 * 1.5;
+   
  }
  if(mousePressed && mouseX>300 && mouseX<400 && mouseY>760 && mouseY<780){
   xkoordinaatti = maat.get(i).annaSynnytys()*20; 
