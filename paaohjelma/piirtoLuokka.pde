@@ -5,16 +5,18 @@ class Piirto{
   List<Integer> ykoordinaatit = new ArrayList<Integer>();
   List<Maa> maat;
   List<Pistejoukko> pistejoukot = new ArrayList<Pistejoukko>();
+  
   PFont fontti = loadFont("AgencyFB-Reg-48.vlw");
   PImage tahti = loadImage("star.png");
   
-  int xakselimode = 1;
   
   boolean bktmode = true;
   boolean synnytysmode = false;
   
   float tahtix;
   float tahtiy;
+  float tahtix2;
+  float tahtiy2;
   
   
   final int xAkselinEtaisyys = 600;
@@ -24,8 +26,10 @@ class Piirto{
  */
 Piirto(List<Maa> maat) {
   this.maat = maat; 
-  this.tahtix = 190;
+  this.tahtix = 290;
   this.tahtiy = xAkselinEtaisyys + 5;
+  this.tahtix2 = 115;
+  this.tahtiy2 = xAkselinEtaisyys - 505;
   for(int i = 0; i <maat.size(); i++){
    float kerroin = maat.get(i).annaVakiluku()/2000000; //en tiia onko taa hyva ratkasu, mutta talla saadaan ainaki pahimmat ylilyonnit pois
    float sade = 20 + kerroin * 0.5; //15 "minimisade" ettei tuu minipalloja
@@ -35,12 +39,8 @@ Piirto(List<Maa> maat) {
    ykoordinaatit.add(ykoordinaatti);
    //Tiina: pallojen xkoordinaatti tulee BKT/ca mukaan
    int xkoordinaatti = 0;
-   if(this.xakselimode == 1){
-   xkoordinaatti = (int)(100 + maat.get(i).annaBkt()/100 * 1.5);
-   }
-   else{
-   xkoordinaatti = (int)(100 + maat.get(i).annaSynnytys());
-   }
+   xkoordinaatti = (int)(200 + maat.get(i).annaBkt()/100 * 1.5);
+
 
    xkoordinaatit.add(xkoordinaatti);
    pistejoukot.add(new Pistejoukko(maat.get(i), (int)xkoordinaatti, (int)ykoordinaatti, (int)sade)); //Lisätään pistejoukko
@@ -75,18 +75,25 @@ void piirto() {
   }
   println(screen.height);
   strokeWeight(3);
-  line(50,xAkselinEtaisyys,950,xAkselinEtaisyys);
-  line(50,xAkselinEtaisyys,50,50);
+  //Piirretaan akseliviivat
+  line(150,xAkselinEtaisyys,950,xAkselinEtaisyys);
+  line(150,xAkselinEtaisyys,150,50);
   textFont(fontti,20);
-  text("Elinikä",10,50);
-
-  rect(100,xAkselinEtaisyys+10,100,30);
+  //y-akselin boksien piirtäminen
   fill(255);
-
-  rect(300,xAkselinEtaisyys+10,100,30);
+  rect(25,xAkselinEtaisyys-500, 100, 30);
   fill(0);
-  text("BKT/ca", 125, xAkselinEtaisyys+30);
-  text("Birth rate", 325, xAkselinEtaisyys+30);
+  text("Elinikä",50, xAkselinEtaisyys-480);
+  image(tahti, this.tahtix2, this.tahtiy2,30,30);
+
+  //x-akselin boksien piirtaminen
+  fill(255);
+  rect(200,xAkselinEtaisyys+10,100,30);
+  rect(400,xAkselinEtaisyys+10,100,30);
+  fill(0);
+  text("BKT/ca", 225, xAkselinEtaisyys+30);
+  text("Birth rate", 425, xAkselinEtaisyys+30);
+  //tahti siirtyy aina sen boksin nurkkaan, joka on aktiivinen
   image(tahti,this.tahtix,this.tahtiy,30,30);
 
 }
@@ -113,20 +120,20 @@ void piirto() {
    int xkoordinaatti = 0;
    for(int i = 0; i<maat.size(); i++){
  //Bkt-mode
- if(mousePressed && mouseX>100 && mouseX<200 && mouseY>xAkselinEtaisyys+10 && mouseY<xAkselinEtaisyys+40){
-   xkoordinaatti = (int)(100 + maat.get(i).annaBkt()/100 * 1.5);
+ if(mousePressed && mouseX>200 && mouseX<300 && mouseY>xAkselinEtaisyys+10 && mouseY<xAkselinEtaisyys+40){
+   xkoordinaatti = (int)(200 + maat.get(i).annaBkt()/100 * 1.5);
    pistejoukot.set(i, new Pistejoukko( maat.get(i), xkoordinaatti, ykoordinaatit.get(i), (int)sateet.get(i) ));
    this.bktmode = true;
    this.synnytysmode = false;
-   this.tahtix = 190;
+   this.tahtix = 290;
  }
  //Synnytys-mode
- if(mousePressed && mouseX>300 && mouseX<400 && mouseY>xAkselinEtaisyys+10 && mouseY<xAkselinEtaisyys+40){
-  xkoordinaatti = (int)(maat.get(i).annaSynnytys()*20); 
+ if(mousePressed && mouseX>400 && mouseX<500 && mouseY>xAkselinEtaisyys+10 && mouseY<xAkselinEtaisyys+40){
+  xkoordinaatti = (int)(100 + maat.get(i).annaSynnytys()*20); 
   pistejoukot.set(i, new Pistejoukko( maat.get(i), xkoordinaatti, ykoordinaatit.get(i), (int)sateet.get(i) ));
   this.synnytysmode = true;
   this.bktmode = false;
-  this.tahtix = 390;
+  this.tahtix = 490;
  }
  if(xkoordinaatti != 0){
  xkoordinaatit.set(i, xkoordinaatti);

@@ -6,7 +6,7 @@ Piirto piirto_olio;
 void setup() {
 
   smooth();
-  size(1000,650);
+  size(1100,650);
   Haku hakuolio = new Haku();
   maat = hakuolio.teeHaku(); 
   piirto_olio = new Piirto(maat);
