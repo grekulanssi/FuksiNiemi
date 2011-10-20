@@ -98,13 +98,13 @@ void piirto() {
   textFont(fontti,20);
   
   //y-akselin boksien piirtäminen
-  piirraYBoksi("Facebook", 100);
-  piirraYBoksi("Öljynkulutus/päivä", 200);
-  piirraYBoksi("Liittymät/asukas", 300);
+  piirraYBoksi("Facebook\n käyt. os.", 100);
+  piirraYBoksi("Öljynk./\npäivä", 200);
+  piirraYBoksi("Liittymät/\nasukas", 300);
   image(tahti, this.tahtix2, this.tahtiy2, 30,30);
   
   //x-akselin boksien
-  piirraXBoksi("Eliniän odote", 200);
+  piirraXBoksi("Eliniänodote", 200);
   piirraXBoksi("BKT/asukas", 400);
   piirraXBoksi("Työttömyysaste", 600);
   image(tahti,this.tahtix,this.tahtiy,30,30);
@@ -113,9 +113,9 @@ void piirto() {
 
 void piirraYBoksi(String teksti, int y) {
   fill(255);
-  rect(25,y, 100, 30);
+  rect(15,y, 110, 70);
   fill(0);
-  text(teksti,50, y+20);
+  text(teksti,25, y+25);
 }
 
 void piirraXBoksi(String teksti, int x) {
