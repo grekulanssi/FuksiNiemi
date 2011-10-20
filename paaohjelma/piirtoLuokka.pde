@@ -1,5 +1,5 @@
 class Piirto{
-  
+  //Listat pallojen sateista ja koordinaateista
   List<Integer> sateet = new ArrayList<Integer>();
   List<Integer> xkoordinaatit = new ArrayList<Integer>();
   List<Integer> ykoordinaatit = new ArrayList<Integer>();
@@ -33,8 +33,9 @@ Piirto(List<Maa> maat) {
   this.tahtix2 = 115;
   this.tahtiy2 = xAkselinEtaisyys - 505;
   for(int i = 0; i <maat.size(); i++){
-   float kerroin = maat.get(i).annaVakiluku()/2000000; //en tiia onko taa hyva ratkasu, mutta talla saadaan ainaki pahimmat ylilyonnit pois
-   float sade = 20 + kerroin * 0.5; //15 "minimisade" ettei tuu minipalloja
+    //Palloilla on tietty minimisade, johon lisataan vakilukuun suhteutettu rengas
+   float kerroin = maat.get(i).annaVakiluku()/2000000;
+   float sade = 20 + kerroin * 0.5;
    sateet.add((int)sade);
    //Tiina: pallojen ykoordinaatti tulee elinian mukaan
    int ykoordinaatti =(int)(xAkselinEtaisyys+10 - maat.get(i).annaElinIka()*5);
@@ -70,7 +71,6 @@ void piirto() {
   for(int i = 0; i <maat.size(); i++) {
    int sade = sateet.get(i);
    fill(0);
-   //Toim.huom! olis parempi jos voitais kayttaa CORNER-modea, nyt esim y-akseli ei kuvaa tilannetta hyvin
    ellipseMode(CENTER);
    ellipse(xkoordinaatit.get(i),ykoordinaatit.get(i), 2*sade, 2*sade); //nyt pallot rivissa
    
