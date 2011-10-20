@@ -7,16 +7,16 @@ class infoRuutu {
     
     // Luodaan inforuutu lataamalla post it -lapun kuva ja kirjoittamalla sen päälle maan tiedot
     
-    textFont(fontti, 24);   
+    textFont(fontti, 22);   
     
     String teksti = maa.annaNimi() + "\nPinta-ala: " + maa.annaPinta_ala() + " km²" + "\nVäkiluku: "
-    + maa.annaVakiluku() + "\nEliniänodote: " + maa.annaElinIka() + " vuotta" + "\nBKT: " + maa.annaBkt() + " €/as.";
+    + maa.annaVakiluku() + "\nEliniänodote: " + maa.annaElinIka() + " vuotta" + "\nBKT: " + maa.annaBkt() + " $/as.";
     
-    image(postit, 80, 80, 250, 250);
+    image(postit, 5, 400, 200, 200);
     
     fill(0);
     
-    text(teksti, x, y, 600, 600);
+    text(teksti, 18, 402, 600, 600);
     
   }
   
