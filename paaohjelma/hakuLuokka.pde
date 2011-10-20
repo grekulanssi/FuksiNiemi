@@ -30,8 +30,12 @@ class Haku {
      int q = Integer.parseInt(pieces[6]);
      float f = Float.parseFloat(pieces[7]);
      int w = Integer.parseInt(pieces[8]);
+     float r = Float.parseFloat(pieces[9]);
+     float s = Float.parseFloat(pieces[10]);
+     int t = Integer.parseInt(pieces[11]);
+     float u = Float.parseFloat(pieces[12]);
      
-     Maa maa = new Maa(a, b, pieces[0], pieces[3], c, d, q, f, w);
+     Maa maa = new Maa(a, b, pieces[0], pieces[3], c, d, q, f, w, r, s, t, u);
      
      // Lisätään Maa-oliot haetutMaat-listaan
      

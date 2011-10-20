@@ -10,8 +10,13 @@ class Maa {
  int tliikenne;
  float synnytys;
  int tlkm; //netinkäyttäjiä
+ float puhelinLiittymat;
+ float tyottomyysAste;
+ int oljynKaytto;
+ float facebookProsentti;
  
- Maa(int vakiluku, float pinta_ala, String nimi, String kuvanNimi, float elinIka, int bkt, int tliikenne, float synnytys, int tlkm) {
+ Maa(int vakiluku, float pinta_ala, String nimi, String kuvanNimi, float elinIka, int bkt, int tliikenne, float synnytys,
+ int tlkm, float puhelinLiittymat, float tyottomyysAste, int oljynKaytto, float facebookProsentti) {
   this.vakiluku = vakiluku;
   this.pinta_ala = pinta_ala;
   this.nimi = nimi;
@@ -22,6 +27,10 @@ class Maa {
   this.tliikenne = tliikenne;
   this.synnytys = synnytys;
   this.tlkm = tlkm;
+  this.puhelinLiittymat = puhelinLiittymat;
+  this.tyottomyysAste = tyottomyysAste;
+  this.oljynKaytto = oljynKaytto;
+  this.facebookProsentti = facebookProsentti;
  }
  
  int annaVakiluku() {
@@ -63,6 +72,22 @@ class Maa {
  
  float annaSynnytys(){
  return this.synnytys;
+ }
+ 
+ float annaPuhelinLiittymat() {
+   return this.puhelinLiittymat;
+ }
+ 
+ float annaTyottomyys() {
+   return this.tyottomyysAste;
+ }
+ 
+ int annaOljynKaytto() {
+  return this.oljynKaytto; 
+ }
+ 
+ float annaFacebookProsentti() {
+  return this. facebookProsentti; 
  }
  
 }
