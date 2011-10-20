@@ -228,9 +228,8 @@ void sijoittelePallot() {
       xLuku = themaa.annaTyottomyys();
       break;
    }
-   //x akseli 150-950
-  //y akseli 50-600
-   int uusiX = 150 + (int)((xLuku/maxX)*800);
+   
+   int uusiX = 200 + (int)((xLuku/maxX)*600);
    pallero.asetaX(uusiX);
    
    
@@ -246,8 +245,8 @@ void sijoittelePallot() {
       yLuku = themaa.annaPuhelinLiittymat();
       break;
    }
-   //y akseli 50-600
-   int uusiY = 50 + (int)((yLuku/maxY)*550);
+   
+   int uusiY = 500 - (int)((yLuku/maxY)*400);
    pallero.asetaY(uusiY);
    
  }
