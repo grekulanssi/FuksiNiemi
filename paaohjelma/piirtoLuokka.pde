@@ -87,10 +87,19 @@ void piirto() {
    
    tarkistaXAkselimode();
    
-   if(!this.onkoInforuutu) {
-    image(((Maa)maat.get(i)).annaLippu(), xkoordinaatit.get(i)-sade, ykoordinaatit.get(i)-sade, 2*sade, 2*sade); 
-    pistejoukot.get(i).piirra(); 
+   image(((Maa)maat.get(i)).annaLippu(), xkoordinaatit.get(i)-sade, ykoordinaatit.get(i)-sade, 2*sade, 2*sade);
+   
+   if(onkoInforuutu) {
+    for(int j = 0; j < pistejoukot.size(); j++) {
+     pistejoukot.get(j).asetaLiikutetaanko(false);
+    } 
+   } else {
+    for(int k = 0; k < pistejoukot.size(); k++) {
+     pistejoukot.get(k).asetaLiikutetaanko(true); 
+    }
    }
+    
+   pistejoukot.get(i).piirra(); 
 
   }
   println(screen.height);
