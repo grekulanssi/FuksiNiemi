@@ -58,7 +58,7 @@ Piirto(List<Maa> maat) {
 void piirto() {
   
   // Piirretään taustakuva
-  image(this.tausta, 128, 30, 850, 590);
+  image(this.tausta, 128, 30);
 // Piirretään tausta
  stroke(255);
   strokeWeight(1);
