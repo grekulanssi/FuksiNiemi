@@ -1,5 +1,6 @@
 // OLIVERIN KOKEILUA
 //TOMIN KOKEILUA
+// JEE TOIMII
 List<Maa> maat;
 Piirto piirto_olio;
 
