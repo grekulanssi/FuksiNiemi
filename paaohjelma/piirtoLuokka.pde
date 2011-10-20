@@ -8,7 +8,7 @@ class Piirto{
   
   PFont fontti = loadFont("AgencyFB-Reg-48.vlw");
   PImage tahti = loadImage("star.png");
-  //PImage tausta = loadImage("taustapaperi.png");
+  PImage tausta = loadImage("taustapaperi.png");
   
   
   boolean bktmode = true;
@@ -56,7 +56,7 @@ Piirto(List<Maa> maat) {
 void piirto() {
   
   // Piirretään taustakuva
-  //image(this.tausta, 35, 33, 930, 735);
+  image(this.tausta, 128, 30, 850, 590);
 // Piirretään tausta
  stroke(255);
   strokeWeight(1);
