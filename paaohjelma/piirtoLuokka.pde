@@ -6,7 +6,7 @@ class Piirto{
   List<Maa> maat;
   List<Pistejoukko> pistejoukot = new ArrayList<Pistejoukko>();
   
-  PFont fontti = loadFont("AgencyFB-Reg-48.vlw");
+  PFont fontti = loadFont("BradleyHandITC-20.vlw");
   PImage tahti = loadImage("star.png");
   //PImage tausta = loadImage("taustapaperi.png");
   
@@ -96,25 +96,35 @@ void piirto() {
   line(150,xAkselinEtaisyys,950,xAkselinEtaisyys);
   line(150,xAkselinEtaisyys,150,50);
   textFont(fontti,20);
+  
   //y-akselin boksien piirtäminen
-  fill(255);
-  rect(25,xAkselinEtaisyys-500, 100, 30);
-  fill(0);
-  text("Elinikä",50, xAkselinEtaisyys-480);
-  image(tahti, this.tahtix2, this.tahtiy2,30,30);
-
-  //x-akselin boksien piirtaminen
-  fill(255);
-  rect(200,xAkselinEtaisyys+10,100,30);
-  rect(400,xAkselinEtaisyys+10,100,30);
-  fill(0);
-  text("BKT/ca", 225, xAkselinEtaisyys+30);
-  text("Birth rate", 425, xAkselinEtaisyys+30);
-  //tahti siirtyy aina sen boksin nurkkaan, joka on aktiivinen
+  piirraYBoksi("Facebook", 100);
+  piirraYBoksi("Öljynkulutus/päivä", 200);
+  piirraYBoksi("Liittymät/asukas", 300);
+  image(tahti, this.tahtix2, this.tahtiy2, 30,30);
+  
+  //x-akselin boksien
+  piirraXBoksi("Eliniän odote", 200);
+  piirraXBoksi("BKT/asukas", 400);
+  piirraXBoksi("Työttömyysaste", 600);
   image(tahti,this.tahtix,this.tahtiy,30,30);
 
 }
 
+void piirraYBoksi(String teksti, int y) {
+  fill(255);
+  rect(25,y, 100, 30);
+  fill(0);
+  text(teksti,50, y+20);
+}
+
+void piirraXBoksi(String teksti, int x) {
+  //x-akselin boksien piirtaminen
+  fill(255);
+  rect(x,xAkselinEtaisyys+10,180,30);
+  fill(0);
+  text(teksti, x+25, xAkselinEtaisyys+30);
+}
 
  void hiirenTarkistus(int x, int y, int sade, Maa maa) {
    
