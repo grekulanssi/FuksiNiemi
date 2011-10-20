@@ -31,6 +31,8 @@ Piirto(List<Maa> maat) {
   this.tahtiy = xAkselinEtaisyys + 5;
   this.tahtix2 = 115;
   this.tahtiy2 = xAkselinEtaisyys - 505;
+  
+  //Lasketaan maille sijainnit
   for(int i = 0; i <maat.size(); i++){
    float kerroin = maat.get(i).annaVakiluku()/2000000; //en tiia onko taa hyva ratkasu, mutta talla saadaan ainaki pahimmat ylilyonnit pois
    float sade = 20 + kerroin * 0.5; //15 "minimisade" ettei tuu minipalloja
@@ -42,8 +44,8 @@ Piirto(List<Maa> maat) {
    int xkoordinaatti = 0;
    xkoordinaatti = (int)(200 + maat.get(i).annaBkt()/100 * 1.5);
 
-
    xkoordinaatit.add(xkoordinaatti);
+   //Luodaan ympyrää vastaava pistejoukko
    pistejoukot.add(new Pistejoukko(maat.get(i), (int)xkoordinaatti, (int)ykoordinaatti, (int)sade)); //Lisätään pistejoukko
   }
 
@@ -56,6 +58,7 @@ void piirto() {
   
   //image(tausta, 0, 0, screen.width, screen.height);
   
+  //Piirretään maaympyrät
   for(int i = 0; i <maat.size(); i++) {
    int sade = sateet.get(i);
    fill(0);
