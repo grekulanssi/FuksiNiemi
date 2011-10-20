@@ -19,6 +19,8 @@ class Piirto{
   float tahtix2;
   float tahtiy2;
   
+  boolean onkoInforuutu = false; // kertoo onko inforuutu luotuna
+  
   
   final int xAkselinEtaisyys = 600;
 
@@ -75,19 +77,20 @@ void piirto() {
    int sade = sateet.get(i);
    fill(0);
    ellipseMode(CENTER);
-   ellipse(xkoordinaatit.get(i),ykoordinaatit.get(i), 2*sade, 2*sade); //nyt pallot rivissa
+   //ellipse(xkoordinaatit.get(i),ykoordinaatit.get(i), 2*sade, 2*sade); //nyt pallot rivissa
    
    // Piirretään maiden liput
-   image(((Maa)maat.get(i)).annaLippu(), xkoordinaatit.get(i)-sade, ykoordinaatit.get(i)-sade, 2*sade, 2*sade);
-
-
-   pistejoukot.get(i).piirra();
+   //image(((Maa)maat.get(i)).annaLippu(), xkoordinaatit.get(i)-sade, ykoordinaatit.get(i)-sade, 2*sade, 2*sade);
 
    // Tarkistetaan onko hiiri jonkun maan päällä 
    hiirenTarkistus(xkoordinaatit.get(i), ykoordinaatit.get(i), sade*2, maat.get(i));
    
    tarkistaXAkselimode();
    
+   if(!this.onkoInforuutu) {
+    image(((Maa)maat.get(i)).annaLippu(), xkoordinaatit.get(i)-sade, ykoordinaatit.get(i)-sade, 2*sade, 2*sade); 
+    pistejoukot.get(i).piirra(); 
+   }
 
   }
   println(screen.height);
@@ -137,6 +140,9 @@ void piirraXBoksi(String teksti, int x) {
    
    if(sqrt(sq(testiX)+sq(testiY)) < sade/2) {
      infoRuutu ruutu = new infoRuutu(maa, 100, 100);
+     this.onkoInforuutu = true;
+   } else {
+    this.onkoInforuutu = false; 
    }
    
  }
