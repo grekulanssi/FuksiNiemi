@@ -8,7 +8,7 @@ class Piirto{
   
   PFont fontti = loadFont("AgencyFB-Reg-48.vlw");
   PImage tahti = loadImage("star.png");
-  PImage tausta = loadImage("taustapaperi.png");
+  //PImage tausta = loadImage("taustapaperi.png");
   
   
   boolean bktmode = true;
@@ -26,6 +26,7 @@ class Piirto{
  * Kun luodaan Piirto-olio, alustetaan säteet ja xkoordinaatit 
  */
 Piirto(List<Maa> maat) {
+  
   this.maat = maat; 
   this.tahtix = 290;
   this.tahtiy = xAkselinEtaisyys + 5;
@@ -56,7 +57,17 @@ Piirto(List<Maa> maat) {
  */
 void piirto() {
   
-  //image(tausta, 0, 0, screen.width, screen.height);
+  // Piirretään taustakuva
+  //image(this.tausta, 35, 33, 930, 735);
+// Piirretään tausta
+ stroke(255);
+  strokeWeight(1);
+  for (int a = 2; a < 18; a++){
+   // ensin pystyviivat
+  line((a*50+50), 600, (a*50+50), 50);
+  // sitten vaakaviivat
+  line(150, (a*50), 950, (a*50));
+  }
   
   //Piirretään maaympyrät
   for(int i = 0; i <maat.size(); i++) {
