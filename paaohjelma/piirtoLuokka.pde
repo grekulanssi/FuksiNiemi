@@ -8,6 +8,7 @@ class Piirto{
   
   PFont fontti = loadFont("AgencyFB-Reg-48.vlw");
   PImage tahti = loadImage("star.png");
+  PImage tausta = loadImage("taustapaperi.png");
   
   
   boolean bktmode = true;
@@ -52,6 +53,8 @@ Piirto(List<Maa> maat) {
  * Piirto metodi piirtää
  */
 void piirto() {
+  
+  //image(tausta, 0, 0, screen.width, screen.height);
   
   for(int i = 0; i <maat.size(); i++) {
    int sade = sateet.get(i);
