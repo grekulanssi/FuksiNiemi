@@ -41,10 +41,10 @@ Piirto(List<Maa> maat) {
    float kerroin = maat.get(i).annaVakiluku()/2000000;
    float sade = 20 + kerroin * 0.5;
    sateet.add((int)sade);
-   //Tiina: pallojen ykoordinaatti tulee elinian mukaan
+   //Pallojen y-aloituskoordinaatit (eli facebook)
    int ykoordinaatti =(int)(xAkselinEtaisyys+10 - maat.get(i).annaElinIka()*5);
    ykoordinaatit.add(ykoordinaatti);
-   //Tiina: pallojen xkoordinaatti tulee BKT/ca mukaan
+   //Pallojen x-aloituskoordinaatit (eli eliniänodote)
    int xkoordinaatti = 0;
    xkoordinaatti = (int)(200 + maat.get(i).annaBkt()/100 * 1.5);
 
@@ -61,7 +61,7 @@ Piirto(List<Maa> maat) {
 void piirto() {
   
   // Piirretään taustakuva
-  image(this.tausta, 128, 30, 850, 590);
+  image(this.tausta, 128, 30, 900, 590);
 // Piirretään tausta
  stroke(255);
   strokeWeight(1);
@@ -94,10 +94,15 @@ void piirto() {
 
   }
   println(screen.height);
-  strokeWeight(3);
+  strokeWeight(2);
   //Piirretaan akseliviivat
-  line(150,xAkselinEtaisyys,950,xAkselinEtaisyys);
-  line(150,xAkselinEtaisyys,150,50);
+  line(150,xAkselinEtaisyys,1000,xAkselinEtaisyys);
+  line(150,xAkselinEtaisyys,150,40);
+  //Piirretaan nuolet akseleiden paihin
+  line(150,40,140,70);
+  line(150,40,160,70);
+  line(1000,xAkselinEtaisyys,970,xAkselinEtaisyys-10);
+  line(1000,xAkselinEtaisyys,970,xAkselinEtaisyys + 10);
   textFont(fontti,20);
   
   //y-akselin boksien piirtäminen
@@ -115,7 +120,7 @@ void piirto() {
 }
 
 void piirraYBoksi(String teksti, int y) {
-  fill(255);
+  fill(255,239,219);
   rect(15,y, 110, 70);
   fill(0);
   text(teksti,25, y+25);
@@ -123,7 +128,7 @@ void piirraYBoksi(String teksti, int y) {
 
 void piirraXBoksi(String teksti, int x) {
   //x-akselin boksien piirtaminen
-  fill(255);
+  fill(255,239,219);
   rect(x,xAkselinEtaisyys+10,180,30);
   fill(0);
   text(teksti, x+25, xAkselinEtaisyys+30);
