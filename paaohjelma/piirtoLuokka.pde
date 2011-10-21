@@ -49,7 +49,10 @@ class Piirtopallo {
    fill(0);
    ellipseMode(CENTER);
    image(kuva, x,y);  
-   pistejoukko.piirra();
+  }
+  
+  Pistejoukko annaPistejoukko() {
+    return this.pistejoukko;
   }
   
 }
@@ -61,7 +64,7 @@ class Piirto{
   
   //Listat pallojen sateista ja koordinaateista
   List<Piirtopallo> piirtopallot = new ArrayList<Piirtopallo>();
-  
+  boolean piirretaanPisteet = true;
   /*
   List<Integer> sateet = new ArrayList<Integer>();
   List<Integer> xkoordinaatit = new ArrayList<Integer>();
@@ -107,7 +110,8 @@ Piirto(List<Maa> maat) {
    float kerroin = maat.get(i).annaVakiluku()/2000000;
    int sade = (int)(20 + kerroin * 0.5);
    //Luodaan piirtopallo
-  this.piirtopallot.add(new Piirtopallo(maat.get(i), 0, 0, sade));  
+  this.piirtopallot.add(new Piirtopallo(maat.get(i), 0, 0, sade));
+  this.tausta.resize(880, 590);
   
 }
 
@@ -122,16 +126,16 @@ Piirto(List<Maa> maat) {
 void piirto() {
   
   // Piirretään taustakuva
-  //image(this.tausta, 0,0);
+  image(this.tausta, 135,25);
   // Piirretään tausta
    stroke(255);
   strokeWeight(1);
   
-  for (int a = 2; a < 18; a++){
+  for (int a = 2; a < 19; a++){
   // ensin pystyviivat
-  line((a*50+50), 600, (a*50+50), 50);
+  line((a*50+50), 600, (a*50+50), 37);
   // sitten vaakaviivat
-  line(150, (a*50), 950, (a*50));
+  line(150, (a*50), 1000, (a*50));
   }
   
   //Piirretään maaympyrät
@@ -139,6 +143,10 @@ void piirto() {
    
    Piirtopallo pallo = piirtopallot.get(i);
    pallo.piirra();
+   if (piirretaanPisteet == true) {
+     pallo.annaPistejoukko().piirra();
+   }
+   
    
    hiirenTarkistus(pallo.annaX()+pallo.annaSade(), pallo.annaY()+pallo.annaSade(), pallo.annaSade()*2, pallo.annaMaa());
 
@@ -171,6 +179,7 @@ void piirto() {
   piirraXBoksi("Työttömyysaste", 600, TYOTTOMYYS);
   //image(tahti,this.tahtix,this.tahtiy,30,30);
 
+  piirraPisteBoksi(60,400);
 }
 
    void hiirenTarkistus(int x, int y, int sade, Maa maa) {
@@ -316,5 +325,32 @@ void piirraXBoksi(String teksti, int x, int mode) {
     sijoittelePallot();
   }
 }
- 
+
+
+void piirraPisteBoksi(int x, int y) {
+  //x-akselin boksien piirtaminen
+  int leveys = 30;
+  int korkeus = 30;
+  String teksti = "joo";
+  fill(255,239,219);
+  if (piirretaanPisteet) {
+    fill(100,100,100);
+  }
+  rect(x,y,leveys,korkeus);
+  fill(0);
+  //text(teksti, x+25, y+30);
+  
+
+}
+
+void mouseClicked() {
+  int leveys = 30, korkeus = 30;
+  int x = 60, y = 400;
+  println(mouseX);
+  //Pisteiden piirto
+  if (mouseX >= x && mouseX <= x+leveys && mouseY >= y && mouseY < y+korkeus) {
+    piirretaanPisteet = !piirretaanPisteet;
+  }
+}
+   
 }
