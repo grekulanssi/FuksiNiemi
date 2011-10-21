@@ -74,10 +74,12 @@ class Piirto{
   //PImage tahti = loadImage("star.png");
   PImage tausta = loadImage("taustapaperi.png");
   
+  // y-akseli
   final int FACEBOOK = 1;
   final int OLJY = 2;
   final int LIITTYMAT = 3;
   
+  // x-akseli
   final int ELINIKA = 4;
   final int BKT = 5;  
   final int TYOTTOMYYS = 6;
@@ -182,9 +184,11 @@ void piirto() {
    
    if(sqrt(sq(testiX)+sq(testiY)) < sade/2) {
      if(!onkoInforuutu) {
-       this.inforuutu = new infoRuutu(maa, 100, 100);
+       this.inforuutu = new infoRuutu(maa, this.xMode, this.yMode);
        onkoInforuutu = true;
      } else {
+      this.inforuutu.asetaX(this.xMode);
+      this.inforuutu.asetaY(this.yMode);
       this.inforuutu.piirra(maa); 
      }
      
