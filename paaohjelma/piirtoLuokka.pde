@@ -90,14 +90,13 @@ Piirto(List<Maa> maat) {
   //Palloilla on tietty minimisade, johon lisataan vakilukuun suhteutettu rengas
    float kerroin = maat.get(i).annaVakiluku()/2000000;
    int sade = (int)(20 + kerroin * 0.5);
-   //Pallojen y-aloituskoordinaatit (eli facebook)
-   int ykoordinaatti =(int)(xAkselinEtaisyys+10 - maat.get(i).annaElinIka()*5);
-   //Pallojen x-aloituskoordinaatit (eli eliniänodote)
-   int xkoordinaatti = (int)(200 + maat.get(i).annaBkt()/100 * 1.5);
    //Luodaan piirtopallo
-  this.piirtopallot.add(new Piirtopallo(maat.get(i), xkoordinaatti, ykoordinaatti, sade));  
+  this.piirtopallot.add(new Piirtopallo(maat.get(i), 0, 0, sade));  
+  
 }
 
+  this.sijoittelePallot();
+  
 }
 
  
