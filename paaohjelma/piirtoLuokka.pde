@@ -135,7 +135,6 @@ void piirto() {
    
    //tarkistaXAkselimode();
    
-<<<<<<< HEAD
    image(((Maa)maat.get(i)).annaLippu(), xkoordinaatit.get(i)-sade, ykoordinaatit.get(i)-sade, 2*sade, 2*sade);
    
    if(onkoInforuutu) {
@@ -149,11 +148,10 @@ void piirto() {
    }
     
    pistejoukot.get(i).piirra(); 
-=======
    //if (!this.onkoInforuutu) {
    
    //}
->>>>>>> dd451aa581ae79a8cd7c042ee97e4e33a5d5f758
+
 
   }
   
