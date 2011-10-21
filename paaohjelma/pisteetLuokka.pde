@@ -6,11 +6,13 @@ Pistejoukko
 class Pistejoukko {
   List<Piste> pisteet = new ArrayList<Piste>();
   int x,y,sade;
+  boolean liikutetaanko; // Artti
   
   Pistejoukko(Maa maa, int x, int y, int sade) {
     this.x=x;
     this.y=y;
     this.sade=sade;
+    this.liikutetaanko = true; // Artti
     
     float liikenteennopeus = (float)maa.annaTliikenne()/100000;
     int pisteidenLkm = maa.annaNetinKayttajat()/1000000;
@@ -26,7 +28,15 @@ class Pistejoukko {
     }
     
   }
+  // Artti
+  boolean annaLiikutetaanko() {
+    return this.liikutetaanko;
+  }
   
+  void asetaLiikutetaanko(boolean totuusarvo) {
+   this.liikutetaanko = totuusarvo; 
+  }
+  // Artti
   int annaX() {
     return this.x;
   }
@@ -84,8 +94,11 @@ class Piste {
     this.edellinenaika = millis();
     
     //Liikutetaan
-    this.x += xDif;
-    this.y += yDif;
+    // Artti
+    if(this.joukko.annaLiikutetaanko()) {
+      this.x += xDif;
+      this.y += yDif;
+    }
     
     //Palautetaan maailmankartalle tarvittaessa
     if ( dist(this.x, this.y, joukko.annaX(), joukko.annaY()) > joukko.annaSade()-HALKAISIJA/2 ) {
