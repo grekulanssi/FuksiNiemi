@@ -85,17 +85,17 @@ class Piirto{
   final int BKT = 5;  
   final int TYOTTOMYYS = 6;
   
-  int xMode = ELINIKA;
+  int xMode = BKT;
   int yMode = FACEBOOK;
   
   boolean onkoInforuutu = false;
   
   infoRuutu inforuutu;
     
-  //x akseli 150-950
+  //x akseli yAkselinEtaisyys-950
   //y akseli 50-600
   final int xAkselinEtaisyys = 600;
-  final int yAkselinEtaisyys = 150;
+  final int yAkselinEtaisyys = 210;
 
 /* 
  * Kun luodaan Piirto-olio, alustetaan säteet ja xkoordinaatit 
@@ -124,16 +124,16 @@ Piirto(List<Maa> maat) {
 void piirto() {
   
   // Piirretään taustakuva
-  image(this.tausta, 135,25);
+  image(this.tausta, yAkselinEtaisyys-15,25);
   // Piirretään tausta
    stroke(255);
   strokeWeight(1);
   
   for (int a = 2; a < 18; a++){
   // ensin pystyviivat
-  line((a*50+50), 600, (a*50+50), 50);
+  line((a*50+yAkselinEtaisyys-100), 600, (a*50+yAkselinEtaisyys-100), 50);
   // sitten vaakaviivat
-  line(150, (a*50), 950, (a*50));
+  line(yAkselinEtaisyys, (a*50), yAkselinEtaisyys+800, (a*50));
   }
   
   //Piirretään maaympyrät
@@ -154,11 +154,11 @@ void piirto() {
   stroke(0);
   strokeWeight(2);
   //Piirretaan akseliviivat
-  line(150,xAkselinEtaisyys,1000,xAkselinEtaisyys);
-  line(150,xAkselinEtaisyys,150,40);
+  line(yAkselinEtaisyys,xAkselinEtaisyys,1000,xAkselinEtaisyys);
+  line(yAkselinEtaisyys,xAkselinEtaisyys,yAkselinEtaisyys,40);
   //Piirretaan nuolet akseleiden paihin
-  line(150,40,140,70);
-  line(150,40,160,70);
+  line(yAkselinEtaisyys,40,yAkselinEtaisyys-10,70);
+  line(yAkselinEtaisyys,40,yAkselinEtaisyys+10,70);
   line(1000,xAkselinEtaisyys,970,xAkselinEtaisyys-10);
   line(1000,xAkselinEtaisyys,970,xAkselinEtaisyys + 10);
   textFont(fontti,20);
@@ -172,9 +172,9 @@ void piirto() {
   //image(tahti, this.tahtix2, this.tahtiy2, 30,30);
   
   //x-akselin boksien
-  piirraXBoksi("Eliniänodote", 200, ELINIKA);
-  piirraXBoksi("BKT/asukas", 400, BKT);
-  piirraXBoksi("Työttömyysaste", 600, TYOTTOMYYS);
+  piirraXBoksi("Eliniänodote", yAkselinEtaisyys+50, ELINIKA);
+  piirraXBoksi("BKT/asukas", yAkselinEtaisyys+250, BKT);
+  piirraXBoksi("Työttömyysaste", yAkselinEtaisyys+450, TYOTTOMYYS);
   //image(tahti,this.tahtix,this.tahtiy,30,30);
 
   piirraPisteBoksi(60,400);
@@ -262,7 +262,7 @@ void sijoittelePallot() {
       break;
    }
    
-   int uusiX = 200 + (int)((xLuku/maxX)*600);
+   int uusiX = yAkselinEtaisyys + (int)((xLuku/maxX)*650);
    pallero.asetaX(uusiX);
    
    
