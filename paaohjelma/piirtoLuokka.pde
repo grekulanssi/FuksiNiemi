@@ -129,11 +129,11 @@ void piirto() {
    stroke(255);
   strokeWeight(1);
   
-  for (int a = 2; a < 18; a++){
+  for (int a = 2; a < 19; a++){
   // ensin pystyviivat
-  line((a*50+50), 600, (a*50+50), 50);
+  line((a*50+50), 600, (a*50+50), 37);
   // sitten vaakaviivat
-  line(150, (a*50), 950, (a*50));
+  line(150, (a*50), 1000, (a*50));
   }
   
   //Piirretään maaympyrät
