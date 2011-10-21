@@ -194,6 +194,8 @@ void piirto() {
        this.inforuutu = new infoRuutu(maa, 100, 100);
        onkoInforuutu = true;
      } else {
+      this.inforuutu.asetaX(this.xMode);
+      this.inforuutu.asetaY(this.yMode);
       this.inforuutu.piirra(maa); 
      }
      
