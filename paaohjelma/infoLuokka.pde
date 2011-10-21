@@ -8,8 +8,8 @@ class infoRuutu {
     
     // Resize postit-kuvalle jottei ohjelma lagaa
     this.postit.resize(200,220);
-    this.x = x;
-    this.y = y;
+    this.x = x; // x on tieto tarkasteltavasta x-akselista
+    this.y = y; // y on tieto tarkasteltavasta y-akselista
   }
   
   void piirra(Maa maa) {
@@ -18,7 +18,9 @@ class infoRuutu {
     
    textFont(fontti, 22);
    
-   String teksti = "asd";
+   String teksti = "asd"; // alustus
+   
+   // tarkistetaan mitä akseleita käyttäjä tarkastelee ja kirjoitetaan tiedot sen mukaan
     
    if(this.x == 4 && this.y == 1) {
       teksti = maa.annaNimi() + "\nPinta-ala: " + maa.annaPinta_ala() + " km²" + "\nVäkiluku: "
@@ -64,9 +66,7 @@ class infoRuutu {
      teksti = maa.annaNimi() + "\nPinta-ala: " + maa.annaPinta_ala() + " km²" + "\nVäkiluku: "
      + maa.annaVakiluku() + "\nTyöttömyysaste: " + maa.annaTyottomyys() + " %" + "\nMobiililiittymät: " + maa.annaPuhelinLiittymat() + " / as.";
    }
-   
-   
-   
+ 
    image(postit, 2, 35);
        
    fill(0);
@@ -76,7 +76,6 @@ class infoRuutu {
   }
   
   void asetaX(int x) {
-    
    this.x = x; 
   }
   

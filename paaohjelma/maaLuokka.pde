@@ -1,4 +1,6 @@
 class Maa {
+  
+  /* Maa-oliot varastoivat tietoa maista */
  
  int vakiluku;
  float pinta_ala;
@@ -8,8 +10,8 @@ class Maa {
  int bkt;
  PImage lippu;
  int tliikenne;
- float synnytys;
- int tlkm; //netinkäyttäjiä
+ float synnytys; // birth rate poistettiin akseleista eikä ole käytössä oikeastaan
+ int tlkm;
  float puhelinLiittymat;
  float tyottomyysAste;
  int oljynKaytto;
@@ -25,7 +27,6 @@ class Maa {
   this.bkt = bkt;
   this.lippu = loadImage(kuvanNimi);
   this.tliikenne = tliikenne;
-  this.synnytys = synnytys;
   this.tlkm = tlkm;
   this.puhelinLiittymat = puhelinLiittymat;
   this.tyottomyysAste = tyottomyysAste;
@@ -61,17 +62,12 @@ class Maa {
    return this.bkt;
  } 
   
- //Anna keskimääräinen nettiyhteyden nopeus 
  int annaTliikenne() {
    return this.tliikenne; 
  }
- //Anna netinkäyttäjien määrä
+ 
  int annaNetinKayttajat() {
    return this.tlkm;
- }
- 
- float annaSynnytys(){
- return this.synnytys;
  }
  
  float annaPuhelinLiittymat() {
