@@ -146,13 +146,13 @@ void piirto() {
   stroke(0);
   strokeWeight(2);
   //Piirretaan akseliviivat
-  line(yAkselinEtaisyys,xAkselinEtaisyys,1000,xAkselinEtaisyys);
+  line(yAkselinEtaisyys,xAkselinEtaisyys,1050,xAkselinEtaisyys);
   line(yAkselinEtaisyys,xAkselinEtaisyys,yAkselinEtaisyys,40);
   //Piirretaan nuolet akseleiden paihin
   line(yAkselinEtaisyys,40,yAkselinEtaisyys-10,70);
   line(yAkselinEtaisyys,40,yAkselinEtaisyys+10,70);
-  line(1000,xAkselinEtaisyys,970,xAkselinEtaisyys-10);
-  line(1000,xAkselinEtaisyys,970,xAkselinEtaisyys + 10);
+  line(1050,xAkselinEtaisyys,1020,xAkselinEtaisyys-10);
+  line(1050,xAkselinEtaisyys,1020,xAkselinEtaisyys + 10);
   textFont(fontti,20);
   
   //Piirretään boksit
@@ -160,7 +160,7 @@ void piirto() {
   //y-akselin boksien piirtäminen
   piirraYBoksi("Facebookin\nkäyttäjiä", 300, FACEBOOK);
   piirraYBoksi("Öljynkulutus", 400, OLJY);
-  piirraYBoksi("Kännykkä-\nliittymiä", 500, LIITTYMAT);
+  piirraYBoksi("Mobiili-\nliittymiä", 500, LIITTYMAT);
   //image(tahti, this.tahtix2, this.tahtiy2, 30,30);
   
   //x-akselin boksien
