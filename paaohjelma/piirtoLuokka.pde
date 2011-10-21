@@ -65,16 +65,8 @@ class Piirto{
   //Listat pallojen sateista ja koordinaateista
   List<Piirtopallo> piirtopallot = new ArrayList<Piirtopallo>();
   boolean piirretaanPisteet = true;
-  /*
-  List<Integer> sateet = new ArrayList<Integer>();
-  List<Integer> xkoordinaatit = new ArrayList<Integer>();
-  List<Integer> ykoordinaatit = new ArrayList<Integer>();
-  List<Maa> maat;
-  List<Pistejoukko> pistejoukot = new ArrayList<Pistejoukko>();
-  */
   
   PFont fontti = loadFont("BradleyHandITC-20.vlw");
-  //PImage tahti = loadImage("star.png");
   PImage tausta = loadImage("taustapaperi.png");
   
   final int FACEBOOK = 1;

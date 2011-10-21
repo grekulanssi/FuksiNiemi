@@ -12,7 +12,6 @@ class Pistejoukko {
     this.x=x;
     this.y=y;
     this.sade=sade;
-    this.liikutetaanko = true; // Artti
     
     float liikenteennopeus = (float)maa.annaTliikenne()/200000;
     int pisteidenLkm = maa.annaNetinKayttajat()/1000000;
@@ -28,23 +27,17 @@ class Pistejoukko {
     }
     
   }
-  // Artti
-  boolean annaLiikutetaanko() {
-    return this.liikutetaanko;
-  }
   
-  void asetaLiikutetaanko(boolean totuusarvo) {
-   this.liikutetaanko = totuusarvo; 
-  }
-  // Artti
   int annaX() {
     return this.x;
   }
+  
   int annaY() {
     return this.y;
   }
+  
   int annaSade() {
-    return this.sade; 
+    return this.sade;
   }
   
   void piirra() {
@@ -94,11 +87,8 @@ class Piste {
     this.edellinenaika = millis();
     
     //Liikutetaan
-    // Artti
-    if(this.joukko.annaLiikutetaanko()) {
       this.x += xDif;
       this.y += yDif;
-    }
     
     //Palautetaan maailmankartalle tarvittaessa
     if ( dist(this.x, this.y, joukko.annaX(), joukko.annaY()) > joukko.annaSade()-HALKAISIJA/2 ) {
