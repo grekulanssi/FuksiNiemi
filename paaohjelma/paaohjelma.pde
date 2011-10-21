@@ -19,3 +19,7 @@ void draw() {
   //infoRuutu ruutu = new infoRuutu(maat.get(1),0,0);
  
 }
+
+void mouseClicked() {
+   piirto_olio.mouseClicked();
+}

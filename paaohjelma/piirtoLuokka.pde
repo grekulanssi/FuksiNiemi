@@ -37,7 +37,10 @@ class Piirtopallo {
    fill(0);
    ellipseMode(CENTER);
    image(kuva, x,y);  
-   pistejoukko.piirra();
+  }
+  
+  Pistejoukko annaPistejoukko() {
+    return this.pistejoukko;
   }
   
 }
@@ -49,7 +52,7 @@ class Piirto{
   
   //Listat pallojen sateista ja koordinaateista
   List<Piirtopallo> piirtopallot = new ArrayList<Piirtopallo>();
-  
+  boolean piirretaanPisteet = true;
   /*
   List<Integer> sateet = new ArrayList<Integer>();
   List<Integer> xkoordinaatit = new ArrayList<Integer>();
@@ -123,6 +126,10 @@ void piirto() {
    
    Piirtopallo pallo = piirtopallot.get(i);
    pallo.piirra();
+   if (piirretaanPisteet == true) {
+     pallo.annaPistejoukko().piirra();
+   }
+   
    
    //ellipse(xkoordinaatit.get(i),ykoordinaatit.get(i), 2*sade, 2*sade); //nyt pallot rivissa
    
@@ -167,6 +174,7 @@ void piirto() {
   piirraXBoksi("Työttömyysaste", 600, TYOTTOMYYS);
   //image(tahti,this.tahtix,this.tahtiy,30,30);
 
+  piirraPisteBoksi(60,400);
 }
 
 void sijoittelePallot() {
@@ -287,5 +295,32 @@ void piirraXBoksi(String teksti, int x, int mode) {
     sijoittelePallot();
   }
 }
- 
+
+
+void piirraPisteBoksi(int x, int y) {
+  //x-akselin boksien piirtaminen
+  int leveys = 30;
+  int korkeus = 30;
+  String teksti = "joo";
+  fill(255,239,219);
+  if (piirretaanPisteet) {
+    fill(100,100,100);
+  }
+  rect(x,y,leveys,korkeus);
+  fill(0);
+  //text(teksti, x+25, y+30);
+  
+
+}
+
+void mouseClicked() {
+  int leveys = 30, korkeus = 30;
+  int x = 60, y = 400;
+  println(mouseX);
+  //Pisteiden piirto
+  if (mouseX >= x && mouseX <= x+leveys && mouseY >= y && mouseY < y+korkeus) {
+    piirretaanPisteet = !piirretaanPisteet;
+  }
+}
+   
 }
