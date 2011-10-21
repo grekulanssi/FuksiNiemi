@@ -7,7 +7,7 @@ class infoRuutu {
   infoRuutu(Maa maa, int x, int y) {
     
     // Resize postit-kuvalle jottei ohjelma lagaa
-    this.postit.resize(200,200);
+    this.postit.resize(200,220);
     this.x = x;
     this.y = y;
   }
@@ -27,7 +27,7 @@ class infoRuutu {
    
    if(this.x == 4 && this.y == 2) {
      teksti = maa.annaNimi() + "\nPinta-ala: " + maa.annaPinta_ala() + " km²" + "\nVäkiluku: "
-     + maa.annaVakiluku() + "\nEliniänodote: " + maa.annaElinIka() + " vuotta" + "\nÖljynkulutus: " + maa.annaOljynKaytto()/1000 + "k bbl/d"; 
+     + maa.annaVakiluku() + "\nEliniänodote: " + maa.annaElinIka() + " vuotta" + "\nÖljynkulutus: " + maa.annaOljynKaytto() + "\ntynnyriä / pvä"; 
    }
    
    if(this.x == 4 && this.y == 3) {
@@ -42,7 +42,7 @@ class infoRuutu {
    
    if(this.x == 5 && this.y == 2) {
      teksti = maa.annaNimi() + "\nPinta-ala: " + maa.annaPinta_ala() + " km²" + "\nVäkiluku: "
-     + maa.annaVakiluku() + "\nBKT: " + maa.annaBkt() + " $ / as." + "\nÖljynkulutus: " + maa.annaOljynKaytto()/1000 + "k bbl/d";
+     + maa.annaVakiluku() + "\nBKT: " + maa.annaBkt() + " $ / as." + "\nÖljynkulutus: " + maa.annaOljynKaytto() + "\ntynnyriä / pvä";
    }
    
    if(this.x == 5 && this.y == 3) {
@@ -57,7 +57,7 @@ class infoRuutu {
    
    if(this.x == 6 && this.y == 2) {
      teksti = maa.annaNimi() + "\nPinta-ala: " + maa.annaPinta_ala() + " km²" + "\nVäkiluku: "
-     + maa.annaVakiluku() + "\nTyöttömyysaste: " + maa.annaTyottomyys() + " %" + "\nÖljynkulutus: " + maa.annaOljynKaytto()/1000 + "k bbl/d";
+     + maa.annaVakiluku() + "\nTyöttömyysaste: " + maa.annaTyottomyys() + " %" + "\nÖljynkulutus: " + maa.annaOljynKaytto() + "\ntynnyriä / pvä";
    }
    
    if(this.x == 6 && this.y == 3) {
