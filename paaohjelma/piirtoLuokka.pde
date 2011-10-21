@@ -19,6 +19,18 @@ class Piirtopallo {
     this.kuva.resize(sade*2, sade*2);
   }
   
+  int annaX() {
+   return this.x; 
+  }
+  
+  int annaY() {
+   return this.y; 
+  }
+  
+  int annaSade() {
+   return this.sade; 
+  }
+  
   Maa annaMaa() {
     return maa;
   }
@@ -76,7 +88,9 @@ class Piirto{
   int xMode = ELINIKA;
   int yMode = FACEBOOK;
   
-  boolean onkoInforuutu = false; // kertoo onko inforuutu luotuna
+  boolean onkoInforuutu = false;
+  
+  infoRuutu inforuutu;
     
   //x akseli 150-950
   //y akseli 50-600
@@ -131,19 +145,7 @@ void piirto() {
    }
    
    
-   //ellipse(xkoordinaatit.get(i),ykoordinaatit.get(i), 2*sade, 2*sade); //nyt pallot rivissa
-   
-   // Piirretään maiden liput
-   //image(((Maa)maat.get(i)).annaLippu(), xkoordinaatit.get(i)-sade, ykoordinaatit.get(i)-sade, 2*sade, 2*sade);
-
-   // Tarkistetaan onko hiiri jonkun maan päällä 
-   //hiirenTarkistus(xkoordinaatit.get(i), ykoordinaatit.get(i), sade*2, maat.get(i));
-   
-   //tarkistaXAkselimode();
-   
-   //if (!this.onkoInforuutu) {
-   
-   //}
+   hiirenTarkistus(pallo.annaX()+pallo.annaSade(), pallo.annaY()+pallo.annaSade(), pallo.annaSade()*2, pallo.annaMaa());
 
   }
   
@@ -176,6 +178,29 @@ void piirto() {
 
   piirraPisteBoksi(60,400);
 }
+
+   void hiirenTarkistus(int x, int y, int sade, Maa maa) {
+   
+   /* Metodi tarkistaa, onko hiiri parametrina annettujen tietojen määräämässä
+      ympyrässä. Jos on, niin luodaan inforuutu
+   */
+   
+   int testiX = x - mouseX;
+   int testiY = y - mouseY;
+   
+   if(sqrt(sq(testiX)+sq(testiY)) < sade/2) {
+     if(!onkoInforuutu) {
+       this.inforuutu = new infoRuutu(maa, 100, 100);
+       onkoInforuutu = true;
+     } else {
+      this.inforuutu.piirra(maa); 
+     }
+     
+   }
+   
+ }
+  
+
 
 void sijoittelePallot() {
 

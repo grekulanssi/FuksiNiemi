@@ -5,19 +5,25 @@ class infoRuutu {
   
   infoRuutu(Maa maa, int x, int y) {
     
-    // Luodaan inforuutu lataamalla post it -lapun kuva ja kirjoittamalla sen päälle maan tiedot
+    // Resize postit-kuvalle jottei ohjelma lagaa
+    this.postit.resize(200,200);
+  }
+  
+  void piirra(Maa maa) {
     
-    textFont(fontti, 22);   
+   // Metodi, joka piirtää inforuudun
     
-    String teksti = maa.annaNimi() + "\nPinta-ala: " + maa.annaPinta_ala() + " km²" + "\nVäkiluku: "
-    + maa.annaVakiluku() + "\nEliniänodote: " + maa.annaElinIka() + " vuotta" + "\nBKT: " + maa.annaBkt() + " $/as.";
+   textFont(fontti, 22);  
     
-    image(postit, 5, 400, 200, 200);
+   String teksti = maa.annaNimi() + "\nPinta-ala: " + maa.annaPinta_ala() + " km²" + "\nVäkiluku: "
+   + maa.annaVakiluku() + "\nEliniänodote: " + maa.annaElinIka() + " vuotta" + "\nBKT: " + maa.annaBkt() + " $/as."; 
+   
+   image(postit, 5, 400);
+       
+   fill(0);
     
-    fill(0);
-    
-    text(teksti, 18, 402, 600, 600);
-    
+   text(teksti, 18, 402, 600, 600);
+   
   }
   
 
