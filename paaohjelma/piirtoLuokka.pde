@@ -105,7 +105,8 @@ Piirto(List<Maa> maat) {
    float kerroin = maat.get(i).annaVakiluku()/2000000;
    int sade = (int)(20 + kerroin * 0.5);
    //Luodaan piirtopallo
-  this.piirtopallot.add(new Piirtopallo(maat.get(i), 0, 0, sade));  
+  this.piirtopallot.add(new Piirtopallo(maat.get(i), 0, 0, sade));
+  this.tausta.resize(880, 590);
   
 }
 
@@ -120,7 +121,7 @@ Piirto(List<Maa> maat) {
 void piirto() {
   
   // Piirretään taustakuva
-  //image(this.tausta, 0,0);
+  image(this.tausta, 135,25);
   // Piirretään tausta
    stroke(255);
   strokeWeight(1);

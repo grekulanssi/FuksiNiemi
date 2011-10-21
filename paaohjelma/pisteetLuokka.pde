@@ -14,7 +14,7 @@ class Pistejoukko {
     this.sade=sade;
     this.liikutetaanko = true; // Artti
     
-    float liikenteennopeus = (float)maa.annaTliikenne()/100000;
+    float liikenteennopeus = (float)maa.annaTliikenne()/200000;
     int pisteidenLkm = maa.annaNetinKayttajat()/1000000;
     
     for (int i=0; i<pisteidenLkm; i++) {
