@@ -160,7 +160,7 @@ void piirto() {
   //y-akselin boksien piirtäminen
   piirraYBoksi("Facebookin\nkäyttäjiä", 300, FACEBOOK);
   piirraYBoksi("Öljynkulutus", 400, OLJY);
-  piirraYBoksi("Kännykkä-\nliittymiä", 500, LIITTYMAT);
+  piirraYBoksi("Mobiili-\nliittymiä", 500, LIITTYMAT);
   //image(tahti, this.tahtix2, this.tahtiy2, 30,30);
   
   //x-akselin boksien
