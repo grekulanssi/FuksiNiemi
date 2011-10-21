@@ -166,9 +166,9 @@ void piirto() {
   //Piirretään boksit
   
   //y-akselin boksien piirtäminen
-  piirraYBoksi("Facebook\n käyt. os.", 100, FACEBOOK);
-  piirraYBoksi("Öljynk./\npäivä", 200, OLJY);
-  piirraYBoksi("Liittymät/\nasukas", 300, LIITTYMAT);
+  piirraYBoksi("Facebookin\nkäyttäjiä", 300, FACEBOOK);
+  piirraYBoksi("Öljynkulutus", 400, OLJY);
+  piirraYBoksi("Kännykkä-\nliittymiä", 500, LIITTYMAT);
   //image(tahti, this.tahtix2, this.tahtiy2, 30,30);
   
   //x-akselin boksien
@@ -177,7 +177,7 @@ void piirto() {
   piirraXBoksi("Työttömyysaste", yAkselinEtaisyys+450, TYOTTOMYYS);
   //image(tahti,this.tahtix,this.tahtiy,30,30);
 
-  piirraPisteBoksi(60,400);
+  piirraPisteBoksi(145,605);
 }
 
    void hiirenTarkistus(int x, int y, int sade, Maa maa) {
@@ -290,18 +290,19 @@ void sijoittelePallot() {
 
 void piirraYBoksi(String teksti, int y, int mode) {
   
+  int leveys = 150;
   fill(255,239,219);
   if (this.yMode == mode) {
     fill(100,100,100);
   }
-  rect(15,y, 110, 70);
+  rect(28,y, leveys, 70);
   fill(0);
-  text(teksti,25, y+25);
+  text(teksti,40, y+25);
   
   //tsekataan klikkaus
 
  if (mousePressed && mouseX >= 15 && mouseX <= 15+110 && mouseY >= y && mouseY < y+70 && this.yMode != mode) {
-    println("HAI"); 
+  
     this.yMode = mode;
     sijoittelePallot();
   }
@@ -309,16 +310,17 @@ void piirraYBoksi(String teksti, int y, int mode) {
 
 void piirraXBoksi(String teksti, int x, int mode) {
   //x-akselin boksien piirtaminen
+  int leveys = 180;
   fill(255,239,219);
   if (this.xMode == mode) {
     fill(100,100,100);
   }
-  rect(x,xAkselinEtaisyys+10,180,30);
+  rect(x,xAkselinEtaisyys+10,leveys,30);
   fill(0);
   text(teksti, x+25, xAkselinEtaisyys+30);
   
   if (mousePressed && mouseX >= x && mouseX <= x+180 && mouseY >= xAkselinEtaisyys+10 && mouseY < xAkselinEtaisyys+10+30 && this.xMode != mode) {
-    println("MUI"); 
+ 
     this.xMode = mode;
     sijoittelePallot();
   }
@@ -343,8 +345,8 @@ void piirraPisteBoksi(int x, int y) {
 
 void mouseClicked() {
   int leveys = 30, korkeus = 30;
-  int x = 60, y = 400;
-  println(mouseX);
+  int x = 145, y = 605;
+  //println(mouseX);
   //Pisteiden piirto
   if (mouseX >= x && mouseX <= x+leveys && mouseY >= y && mouseY < y+korkeus) {
     piirretaanPisteet = !piirretaanPisteet;

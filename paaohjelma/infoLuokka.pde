@@ -67,11 +67,11 @@ class infoRuutu {
    
    
    
-   image(postit, 5, 400);
+   image(postit, 2, 35);
        
    fill(0);
     
-   text(teksti, 18, 402, 600, 600);
+   text(teksti, 15, 37, 600, 600);
    
   }
   
