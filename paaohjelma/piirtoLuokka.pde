@@ -291,17 +291,18 @@ void sijoittelePallot() {
 void piirraYBoksi(String teksti, int y, int mode) {
   
   int leveys = 150;
+  int xx = 28;
   fill(255,239,219);
   if (this.yMode == mode) {
     fill(100,100,100);
   }
-  rect(28,y, leveys, 70);
+  rect(xx,y, leveys, 70);
   fill(0);
   text(teksti,40, y+25);
   
   //tsekataan klikkaus
 
- if (mousePressed && mouseX >= 15 && mouseX <= 15+110 && mouseY >= y && mouseY < y+70 && this.yMode != mode) {
+ if (mousePressed && mouseX >= xx && mouseX <= xx+leveys && mouseY >= y && mouseY < y+70 && this.yMode != mode) {
   
     this.yMode = mode;
     sijoittelePallot();
@@ -337,8 +338,11 @@ void piirraPisteBoksi(int x, int y) {
     fill(100,100,100);
   }
   rect(x,y,leveys,korkeus);
-  fill(0);
-  //text(teksti, x+25, y+30);
+  
+  fill(255);
+  stroke(0);
+  strokeWeight(1);
+  ellipse(160, 620, 8, 8); 
   
 
 }
