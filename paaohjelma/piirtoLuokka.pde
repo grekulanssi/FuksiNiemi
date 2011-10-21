@@ -121,11 +121,11 @@ void piirto() {
    stroke(255);
   strokeWeight(1);
   
-  for (int a = 2; a < 18; a++){
+  for (int a = 2; a < 19; a++){
   // ensin pystyviivat
-  line((a*50+yAkselinEtaisyys-100), 600, (a*50+yAkselinEtaisyys-100), 50);
+  line((a*50+yAkselinEtaisyys-100), 600, (a*50+yAkselinEtaisyys-100), 40);
   // sitten vaakaviivat
-  line(yAkselinEtaisyys, (a*50), yAkselinEtaisyys+800, (a*50));
+  line(yAkselinEtaisyys, (a*50), yAkselinEtaisyys+850, (a*50));
   }
   
   //Piirretään maaympyrät
@@ -286,7 +286,7 @@ void piirraYBoksi(String teksti, int y, int mode) {
   int xx = 28;
   fill(255,239,219);
   if (this.yMode == mode) {
-    fill(100,100,100);
+    fill(242,217,155);
   }
   rect(xx,y, leveys, 70);
   fill(0);
@@ -306,7 +306,7 @@ void piirraXBoksi(String teksti, int x, int mode) {
   int leveys = 180;
   fill(255,239,219);
   if (this.xMode == mode) {
-    fill(100,100,100);
+    fill(242,217,155);
   }
   rect(x,xAkselinEtaisyys+10,leveys,30);
   fill(0);
@@ -327,7 +327,7 @@ void piirraPisteBoksi(int x, int y) {
   String teksti = "joo";
   fill(255,239,219);
   if (piirretaanPisteet) {
-    fill(100,100,100);
+    fill(242,217,155);
   }
   rect(x,y,leveys,korkeus);
   
